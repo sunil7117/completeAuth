@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import "./common.css";
 const Register = () => {
+  const initialValue = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  };
+  const [user, setUser] = useState(initialValue);
+  const handleInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  const handleRegister = (e) => {
+    console.log(user);
+  };
   return (
     <div className="outer-box">
       <div className="inner-box">
@@ -16,7 +29,8 @@ const Register = () => {
                 type="text"
                 id="firstname"
                 name="firstName"
-                value={""}
+                value={user.firstName}
+                onChange={handleInputChange}
                 placeholder="Enter  first name here..."
               />
             </p>
@@ -25,8 +39,9 @@ const Register = () => {
               <input
                 type="text"
                 id="lastname"
-                value={""}
+                value={user.lastName}
                 name="lastName"
+                onChange={handleInputChange}
                 placeholder="Enter last name here..."
               />
             </p>
@@ -35,8 +50,9 @@ const Register = () => {
               <input
                 type="email"
                 id="email"
-                value={""}
+                value={user.email}
                 name="email"
+                onChange={handleInputChange}
                 placeholder="Enter email here..."
               />
             </p>
@@ -45,13 +61,19 @@ const Register = () => {
               <input
                 type="password"
                 id="password"
-                value={""}
+                value={user.password}
                 name="password"
+                onChange={handleInputChange}
                 placeholder="Enter password here..."
               />
             </p>
             <p>
-              <input type="button" id="submit" value="Create Account" />
+              <input
+                type="button"
+                id="submit"
+                onClick={handleRegister}
+                value="Create Account"
+              />
             </p>
           </form>
         </main>
