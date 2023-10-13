@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
-import { Login } from "../service/api";
-const Signin = () => {
+// import { Login } from "../service/api";
+
+const Forget = () => {
   const navigate = useNavigate();
   const initialValue = {
     email: "",
-    password: "",
   };
   const [user, setUser] = useState(initialValue);
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const handleSignin = async (e) => {
-    const info = await Login(user);
-    if (info.status === 200) {
-      console.log(info);
-      navigate("/home");
-    }
-    if (info.status === 403) {
-      return alert("email/password wrong. Please check first");
-    }
-    if (info.status === 404) {
-      return alert("email/password not found  yet. Please check first");
-    }
+  const handleForget = async (e) => {
+    // const info = await Login(user);
+    // if (info.status === 200) {
+    //   console.log(info);
+    //   navigate("/home");
+    // }
+    // if (info.status === 403) {
+    //   return alert("email/password wrong. Please check first");
+    // }
+    // if (info.status === 404) {
+    //   return alert("email/password not found  yet. Please check first");
+    // }
   };
   return (
     <div className="outer-box">
       <div className="inner-box">
         <header className="signup-header">
-          <h1>Loin</h1>
-          <p>It just take 30 second</p>
+          <h1>Enter Email</h1>
+          <p>Please provied that email you have register with us.</p>
         </header>
         <main className="signup-body">
           <form>
@@ -46,26 +46,10 @@ const Signin = () => {
               />
             </p>
             <p>
-              <label htmlFor="">Password</label>
-              <input
-                type="password"
-                id="password"
-                value={user.password}
-                name="password"
-                onChange={handleInputChange}
-                placeholder="Enter password here..."
-              />
-              <small className="forget">
-                <Link to="/forgetpassword" className="link">
-                  Forget Password
-                </Link>
-              </small>
-            </p>
-            <p>
               <input
                 type="button"
                 id="submit"
-                onClick={handleSignin}
+                onClick={handleForget}
                 value="Create Account"
               />
             </p>
@@ -83,4 +67,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Forget;
