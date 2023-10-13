@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
-// import { Login } from "../service/api";
+import { ForgetPassword } from "../service/api";
 
 const Forget = () => {
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
   const initialValue = {
     email: "",
   };
@@ -13,11 +13,12 @@ const Forget = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const handleForget = async (e) => {
-    // const info = await Login(user);
-    // if (info.status === 200) {
-    //   console.log(info);
-    //   navigate("/home");
-    // }
+    const info = await ForgetPassword(user);
+    if (info.status === 200) {
+      console.log(info);
+      alert(info.data);
+      // navigate("/home");
+    }
     // if (info.status === 403) {
     //   return alert("email/password wrong. Please check first");
     // }
