@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
+import { Signup } from "../service/api";
 const Register = () => {
+  const navigate = useNavigate();
   const initialValue = {
     firstName: "",
     lastName: "",
@@ -11,8 +14,15 @@ const Register = () => {
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const handleRegister = (e) => {
-    console.log(user);
+  const handleRegister = async (e) => {
+    const info = await Signup(user);
+    if (info.status === 200) {
+      alert(info.data);
+      navigate("/login");
+    }
+    if (info.status === 409) {
+      return alert("user already register....");
+    }
   };
   return (
     <div className="outer-box">
@@ -78,7 +88,9 @@ const Register = () => {
           </form>
         </main>
         <footer className="signup-footer">
-          <p>{/* Aready have an account? <Link to="/login">Login</Link> */}</p>
+          <p>
+            Aready have an account? <Link to="/login">Login</Link>
+          </p>
         </footer>
       </div>
       <div className="circle c1"></div>
