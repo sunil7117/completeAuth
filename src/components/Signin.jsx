@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./common.css";
-import { Signup } from "../service/api";
-const Register = () => {
+import { Login } from "../service/api";
+const Signin = () => {
   const navigate = useNavigate();
   const initialValue = {
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
   };
@@ -14,47 +12,28 @@ const Register = () => {
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const handleRegister = async (e) => {
-    const info = await Signup(user);
+  const handleSignin = async (e) => {
+    const info = await Login(user);
     if (info.status === 200) {
-      alert(info.data);
-      navigate("/login");
+      console.log(info);
+      // navigate("/home");
     }
-    if (info.status === 409) {
-      return alert("user already register....");
+    if (info.status === 403) {
+      return alert("email/password wrong. Please check first");
+    }
+    if (info.status === 404) {
+      return alert("email/password not found  yet. Please check first");
     }
   };
   return (
     <div className="outer-box">
       <div className="inner-box">
         <header className="signup-header">
-          <h1>signup</h1>
+          <h1>Loin</h1>
           <p>It just take 30 second</p>
         </header>
         <main className="signup-body">
           <form>
-            <p>
-              <label htmlFor="">Full Name</label>
-              <input
-                type="text"
-                id="firstname"
-                name="firstName"
-                value={user.firstName}
-                onChange={handleInputChange}
-                placeholder="Enter  first name here..."
-              />
-            </p>
-            <p>
-              <label htmlFor="">Last Name</label>
-              <input
-                type="text"
-                id="lastname"
-                value={user.lastName}
-                name="lastName"
-                onChange={handleInputChange}
-                placeholder="Enter last name here..."
-              />
-            </p>
             <p>
               <label htmlFor="">Email</label>
               <input
@@ -81,16 +60,14 @@ const Register = () => {
               <input
                 type="button"
                 id="submit"
-                onClick={handleRegister}
+                onClick={handleSignin}
                 value="Create Account"
               />
             </p>
           </form>
         </main>
         <footer className="signup-footer">
-          <p>
-            Aready have an account? <Link to="/login">Login</Link>
-          </p>
+          <p>{/* Aready have an account? <Link to="/login">Login</Link> */}</p>
         </footer>
       </div>
       <div className="circle c1"></div>
@@ -99,4 +76,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Signin;
