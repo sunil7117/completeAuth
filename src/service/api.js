@@ -1,3 +1,5 @@
+const api="http://localhost:8000"
+
 export const Signup=async()=>{}
 export const Login=async()=>{}
 export const ForgetPassword=async()=>{}
