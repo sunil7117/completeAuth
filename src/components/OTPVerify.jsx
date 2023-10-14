@@ -1,49 +1,46 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
-import { ForgetPassword } from "../service/api";
+import { verifyOTP } from "../service/api";
 
-const Forget = () => {
+const OTPVerify = () => {
   const navigate = useNavigate();
   const initialValue = {
-    email: "",
+    code: "",
   };
   const [user, setUser] = useState(initialValue);
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const handleForget = async (e) => {
-    const info = await ForgetPassword(user);
+    const info = await verifyOTP(user);
     if (info.status === 200) {
       console.log(info);
       alert(info.data);
-      navigate("/otpverification");
+      navigate("/update-password");
     }
-    // if (info.status === 403) {
-    //   return alert("email/password wrong. Please check first");
-    // }
-    if (info.status === 404) {
-      return alert(info.data);
+    if (info.status === 401) {
+      return alert("OTP expired");
     }
   };
   return (
     <div className="outer-box">
       <div className="inner-box">
         <header className="signup-header">
-          <h2>Enter Email</h2>
-          <p>Please provied that email you have register with us.</p>
+          <h1>OTP Verification</h1>
+          <p>Input Here OTP</p>
         </header>
         <main className="signup-body">
           <form>
             <p>
               <label htmlFor="">Email</label>
               <input
-                type="email"
-                id="email"
-                value={user.email}
-                name="email"
+                type="text"
+                id="otp"
+                value={user.code}
+                name="code"
                 onChange={handleInputChange}
-                placeholder="Enter email here..."
+                placeholder="Enter OTP here..."
               />
             </p>
             <p>
@@ -51,7 +48,7 @@ const Forget = () => {
                 type="button"
                 id="submit"
                 onClick={handleForget}
-                value="Send OTP"
+                value="Verify OTP"
               />
             </p>
           </form>
@@ -68,4 +65,4 @@ const Forget = () => {
   );
 };
 
-export default Forget;
+export default OTPVerify;

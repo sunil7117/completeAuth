@@ -28,7 +28,7 @@ const Register = () => {
     <div className="outer-box">
       <div className="inner-box">
         <header className="signup-header">
-          <h1>signup</h1>
+          <h2>signup</h2>
           <p>It just take 30 second</p>
         </header>
         <main className="signup-body">

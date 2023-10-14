@@ -29,7 +29,7 @@ const Signin = () => {
     <div className="outer-box">
       <div className="inner-box">
         <header className="signup-header">
-          <h1>Loin</h1>
+          <h2>Login</h2>
           <p>It just take 30 second</p>
         </header>
         <main className="signup-body">
@@ -66,7 +66,7 @@ const Signin = () => {
                 type="button"
                 id="submit"
                 onClick={handleSignin}
-                value="Create Account"
+                value="Login"
               />
             </p>
           </form>
