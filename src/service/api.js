@@ -9,7 +9,21 @@ export const Signup=async(data)=>{
         return(error.response)
      }
 }
-export const Login=async()=>{}
-export const ForgetPassword=async()=>{}
+export const Login=async(data)=>{
+   try {
+      return await axios.post(`${api}/api/auth/signin`,data)
+   } catch (error) {
+      console.error(error.response)
+      return(error.response)
+   }
+}
+export const ForgetPassword=async(data)=>{
+   try {
+      return await axios.post(`${api}/api/auth/forget`,data)
+   } catch (error) {
+      console.error(error.response)
+      return(error.response)
+   }
+}
 export const OTPVerify=async()=>{}
 export const UpdatePassword=async()=>{}
