@@ -1,6 +1,6 @@
 import axios from 'axios'
-// const api=process.env.REACT_APP_SERVER||"http://locolhost:8000"
-const api="https://complete-auth-api.vercel.app/"
+const api=process.env.REACT_APP_SERVER||"http://locolhost:8000"
+// const api="https://complete-auth-api.vercel.app/"
 
 export const Signup=async(data)=>{
      try {
