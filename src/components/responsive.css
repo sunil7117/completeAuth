@@ -45,22 +45,6 @@
   }
 }
 @media screen and (min-width: 768px) {
-  .inner-box {
-    width: 20rem;
-  }
-  .signup-header h2 {
-    font-size: 1.6rem;
-  }
-  .signup-header p {
-    font-size: 0.9rem;
-  }
-  .signup-body p label {
-    font-size: 1em;
-  }
-  .signup-body p input {
-    font-size: 1em;
-    padding: 0.2rem;
-  }
   ::placeholder{
     font-size: 0.9em;
   }
@@ -89,7 +73,9 @@
   } 
 }
 @media screen and (min-width: 992px) {
-   
+  .inner-box {
+    width: 24rem;
+  }  
 }
 @media screen and (min-width: 1200px) {
    
