@@ -27,7 +27,7 @@ const OTPVerify = () => {
     <div className="outer-box">
       <div className="inner-box">
         <header className="signup-header">
-          <h1>OTP Verification</h1>
+          <h2>OTP Verification</h2>
           <p>Input Here OTP</p>
         </header>
         <main className="signup-body">
@@ -55,7 +55,10 @@ const OTPVerify = () => {
         </main>
         <footer className="signup-footer">
           <p>
-            Create an account? <Link to="/signup">Click Here </Link>
+            Create an account?{" "}
+            <Link to="/signup" className="link">
+              Click Here{" "}
+            </Link>
           </p>
         </footer>
       </div>
