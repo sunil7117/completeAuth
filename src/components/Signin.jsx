@@ -31,7 +31,6 @@ const Signin = () => {
         <header className="signup-header">
           <h2>Login</h2>
           <p>It just take 30 second</p>
-          {process.env.REACT_APP_SERVER}
         </header>
         <main className="signup-body">
           <form>
