@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
+import "./responsive.css";
 import { ForgetPassword } from "../service/api";
 
 const Forget = () => {
@@ -58,7 +59,10 @@ const Forget = () => {
         </main>
         <footer className="signup-footer">
           <p>
-            Create an account? <Link to="/signup">Click Here </Link>
+            Create an account?{" "}
+            <Link to="/signup" className="link">
+              Click Here{" "}
+            </Link>
           </p>
         </footer>
       </div>

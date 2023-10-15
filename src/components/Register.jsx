@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
+// import "./responsive.css";
 import { Signup } from "../service/api";
 const Register = () => {
   const navigate = useNavigate();
@@ -89,7 +90,10 @@ const Register = () => {
         </main>
         <footer className="signup-footer">
           <p>
-            Aready have an account? <Link to="/login">Login</Link>
+            Aready have an account?{" "}
+            <Link to="/login" className="link">
+              Login
+            </Link>
           </p>
         </footer>
       </div>

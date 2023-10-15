@@ -1,0 +1,100 @@
+/* Mobile first media Query /Responsive page */
+
+@media screen and (min-width: 576px) {
+  .inner-box {
+    width: 20rem;
+  }
+  .signup-header h2 {
+    font-size: 1.6rem;
+  }
+  .signup-header p {
+    font-size: 0.9rem;
+  }
+  .signup-body p label {
+    font-size: 1em;
+  }
+  .signup-body p input {
+    font-size: 1em;
+    padding: 0.2rem;
+  }
+  ::placeholder{
+    font-size: 0.9em;
+  }
+  .signup-body p input[type="button"] {
+    font-size: 1em;
+  
+  }
+  .signu2p-footer p {
+    font-size: 1em;
+  }
+  .signup-footer p .link {
+    font-size: 1em;
+  }
+
+  .circle {
+    width: 8em;
+    height: 8em;
+  } 
+  .c1 {
+    top: 4em;
+    left: 4em;
+  }
+  .c2 {
+    right: 4em;
+    bottom: 4em;
+  }
+}
+@media screen and (min-width: 768px) {
+  .inner-box {
+    width: 20rem;
+  }
+  .signup-header h2 {
+    font-size: 1.6rem;
+  }
+  .signup-header p {
+    font-size: 0.9rem;
+  }
+  .signup-body p label {
+    font-size: 1em;
+  }
+  .signup-body p input {
+    font-size: 1em;
+    padding: 0.2rem;
+  }
+  ::placeholder{
+    font-size: 0.9em;
+  }
+  .signup-body p input[type="button"] {
+    font-size: 1em;
+  
+  }
+  .signup-footer p {
+    font-size: 1em;
+  }
+  .signup-footer p .link {
+    font-size: 1em;
+  }
+
+  .circle {
+    width: 8em;
+    height: 8em;
+  }
+  .c1 {
+    top: 4em;
+    left: 10em;
+  }
+  .c2 {
+    right: 10em;
+    bottom: 4em;
+  } 
+}
+@media screen and (min-width: 992px) {
+   
+}
+@media screen and (min-width: 1200px) {
+   
+}
+
+@media screen and (min-width: 1400px) {
+   
+}

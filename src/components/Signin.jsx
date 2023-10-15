@@ -74,7 +74,10 @@ const Signin = () => {
         </main>
         <footer className="signup-footer">
           <p>
-            Create an account? <Link to="/signup">Click Here </Link>
+            Create an account?{" "}
+            <Link to="/signup" className="link">
+              Click Here{" "}
+            </Link>
           </p>
         </footer>
       </div>
