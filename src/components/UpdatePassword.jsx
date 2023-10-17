@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UpdatePasswords } from "../service/api";
 
 const UpdatePassword = () => {
+  const navigate = useNavigate();
   const initialValue = {
     password: "",
     confirm_password: "",
@@ -21,16 +22,15 @@ const UpdatePassword = () => {
   };
   const handleUpdatePassword = async (e) => {
     const { password } = user;
-    const info = await UpdatePasswords(password);
-    console.log(info);
-    // if (info.status === 200) {
-    //   console.log(info);
-    //   alert(info.data);
-    //   // navigate("/home");
-    // }
-    // if (info.status === 401) {
-    //   return alert("OTP expired");
-    // }
+    const info = await UpdatePasswords({ password });
+    if (info.status === 200) {
+      alert(info.data);
+      navigate("/login");
+    }
+    if (info.status === 404) {
+      console.warn(info.data);
+      navigate("/forgetpassword");
+    }
   };
   return (
     <div className="outer-box">

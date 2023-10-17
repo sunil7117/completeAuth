@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
-// import "./responsive.css";
+import "./responsive.css";
 import { Signup } from "../service/api";
 const Register = () => {
   const navigate = useNavigate();
