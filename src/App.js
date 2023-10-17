@@ -5,16 +5,16 @@ import Signin from './components/Signin';
 import Forget from './components/Forget';
 import OTPVerify from './components/OTPVerify';
 import Home from './pages/Home';
-import { useState } from 'react';
 import UpdatePassword from './components/UpdatePassword';
 
 function App() {
-  const[isAuthenctic,setisAuthenctic]=useState(false)
+  const isAuthenctic=false
   return (
     <BrowserRouter>
     <Home/>
     <Routes>
-      {/* <Route path="/" element={isAuthenctic?<Home/>:<Signin/>} />
+      <Route path="/" element={isAuthenctic?<Home/>:<Signin/>} />
+      <Route path="/home" element={<Home/>} />
       <Route path="/signup" element={<Register/>} />
       <Route path="/login" element={<Signin/>} />
       <Route path="/forgetpassword" element={<Forget/>} />

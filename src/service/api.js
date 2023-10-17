@@ -6,7 +6,7 @@ export const Signup=async(data)=>{
      try {
         return await axios.post(`${api}/api/auth/signup`,data)
       } catch (error) {
-         console.error(error.response)
+         // console.error(error.response)     /*This code is for developer only*/
          return(error.response)
       }
    }
@@ -14,7 +14,6 @@ export const Signup=async(data)=>{
       try {
       return await axios.post(`${api}/api/auth/signin`,data)
    } catch (error) {
-      console.error(error.response)
       return(error.response)
    }
 }
@@ -22,7 +21,6 @@ export const ForgetPassword=async(data)=>{
    try {
       return await axios.post(`${api}/api/auth/forget`,data)
    } catch (error) {
-      console.error(error.response)
       return(error.response)
    }
 }
@@ -30,8 +28,13 @@ export const verifyOTP=async(data)=>{
    try {
       return await axios.post(`${api}/api/auth/verifyOTP`,data)
    } catch (error) {
-      console.error(error.response)
       return(error.response)
    }
 }
-export const UpdatePassword=async()=>{}
+export const UpdatePasswords=async(data)=>{
+   try {
+      return await axios.post(`${api}/api/auth/updatepassword`,data)
+   } catch (error) {
+      return(error.response)
+   }
+}
