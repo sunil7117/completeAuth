@@ -12,13 +12,14 @@ function App() {
   const[isAuthenctic,setisAuthenctic]=useState(false)
   return (
     <BrowserRouter>
+    <Home/>
     <Routes>
-      <Route path="/" element={isAuthenctic?<Home/>:<Signin/>} />
+      {/* <Route path="/" element={isAuthenctic?<Home/>:<Signin/>} />
       <Route path="/signup" element={<Register/>} />
       <Route path="/login" element={<Signin/>} />
       <Route path="/forgetpassword" element={<Forget/>} />
       <Route path="/otpverification" element={<OTPVerify/>} />
-      <Route path="/update-password" element={<UpdatePassword/>} />
+      <Route path="/update-password" element={<UpdatePassword/>} /> */}
     </Routes>
     </BrowserRouter>
   );
