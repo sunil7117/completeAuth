@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./common.css";
 import { Login } from "../service/api";
+import { AuthContext } from "../contextapi/AuthContext";
 const Signin = () => {
   const navigate = useNavigate();
+  const setAuth = useContext(AuthContext).setauth;
   const initialValue = {
     email: "",
     password: "",
@@ -16,6 +18,12 @@ const Signin = () => {
     const info = await Login(user);
     if (info.status === 200) {
       console.log(info);
+      sessionStorage.setItem("access-token", `Bearer ${info.data.accessToken}`);
+      sessionStorage.setItem(
+        "refresh-token",
+        `Bearer ${info.data.refreshToken}`
+      );
+      setAuth(info.data.userdata);
       navigate("/home");
     }
     if (info.status === 403) {

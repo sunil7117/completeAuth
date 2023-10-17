@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AuthContext } from './contextapi/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+const Root=()=>{
+  const[auth,setauth]=useState(null)
+return(<React.StrictMode>
+  <AuthContext.Provider value={{auth:auth,setauth:setauth}}>
     <App />
-  </React.StrictMode>
+  </AuthContext.Provider>
+</React.StrictMode>)
+}
+root.render(
+  <Root/>
 );
 
 // If you want to start measuring performance in your app, pass a function
