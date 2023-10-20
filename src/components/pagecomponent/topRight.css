@@ -1,0 +1,27 @@
+.right{
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.right  > p > span {
+    margin: 0 0.5em;
+}
+
+.lan{
+    display: flex;
+    align-items: center;
+}
+.lan::before{
+    content: "|";
+    margin: 0 1em;
+}
+.lan::after{
+    content: "|";
+    margin: 0 1em;
+}
+.login{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

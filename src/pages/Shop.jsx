@@ -1,14 +1,12 @@
 import React from "react";
 import Topbar from "../components/Topbar";
 
-const Home = () => {
+const Shop = () => {
   return (
     <>
-      <div className="home">
-        <Topbar />
-      </div>
+      <Topbar />
     </>
   );
 };
 
-export default Home;
+export default Shop;

@@ -1,0 +1,9 @@
+.support{
+    display: flex;
+}
+.call{
+    padding-right: 12px;
+}
+@media screen and (min-width:992px) {
+        
+}
