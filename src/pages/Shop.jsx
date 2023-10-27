@@ -1,12 +1,7 @@
 import React from "react";
-import Topbar from "../components/Topbar";
 
 const Shop = () => {
-  return (
-    <>
-      <Topbar />
-    </>
-  );
+  return <>Topbar</>;
 };
 
 export default Shop;

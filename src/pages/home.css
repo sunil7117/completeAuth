@@ -1,21 +1,2 @@
-header{
-    display: none;
-    background-color: aliceblue;
-}
-.topHeader{
-    width: 85vw;
-    height: 40px;
-    display: flex;
-    margin: 0 auto;
-    font-size: 0.9em;
-    font-weight: 500;
-}
-.topbar{
-    position: relative;
-}
 
-@media screen and (min-width:992px) {
-    header{
-        display: block;
-    }
-}
+
