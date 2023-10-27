@@ -1,14 +1,10 @@
 import React from "react";
 import "./home.css";
-import HeaderTobarOne from "../components/pageComponents/HeaderTopbarOne";
-import HeaderTopbarTwo from "../components/pageComponents/HeaderTopbarTwo";
-import HeaderTopbarThree from "../components/pageComponents/HeaderTopbarThree";
+import Header from "../components/Header";
 const Home = () => {
   return (
     <>
-      <HeaderTobarOne />
-      <HeaderTopbarTwo />
-      <HeaderTopbarThree />
+      <Header />
     </>
   );
 };
