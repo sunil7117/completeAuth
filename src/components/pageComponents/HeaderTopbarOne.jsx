@@ -39,6 +39,7 @@ export const HeaderTopbarRight = () => {
   const handleLogout = () => {
     sessionStorage.clear();
     navigate("/login");
+    console.log("checked error");
   };
   return (
     <div className="header_topbar_right">
