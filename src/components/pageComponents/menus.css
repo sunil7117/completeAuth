@@ -35,7 +35,8 @@
         color: #fff;
     }
     .menulist:hover .submenu{
-        display: block
+        display: block;
+        z-index: 10;
     }
     .active{
         color: greenyellow;
