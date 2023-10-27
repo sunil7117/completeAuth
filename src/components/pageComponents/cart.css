@@ -1,0 +1,16 @@
+.cart{
+    display: flex;
+    gap:15px;
+    justify-content: flex-end;
+}
+.cart>p>span{
+    font-weight: 800;
+}
+.pointer:hover{
+    cursor: pointer;
+}
+@media screen and (max-width:991px) {
+    .cart{
+        justify-content: flex-start;
+    }
+}

@@ -1,0 +1,39 @@
+.headerTopbarTwo{
+    width: 85vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding: 15px 0;
+}
+.header_topbar_two_left{
+    flex:1
+}
+.header_topbar_two_middle{
+    flex:2;
+    display: none;
+}
+.header_topbar_two_right{
+    flex:1;
+    display: flex;
+}
+.desktop{
+    display: none;
+}
+.mobile{
+    padding: 10px 0                ;
+    justify-content: center;
+}
+.show{
+    display: none;
+}
+@media screen and (min-width:992px){
+    .header_topbar_two_right,.header_topbar_two_middle{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+    
+    
+}

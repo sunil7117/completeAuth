@@ -1,0 +1,7 @@
+.cart{
+    display: flex;
+    gap:15px;
+}
+.cart>p>span{
+    font-weight: 800;
+}

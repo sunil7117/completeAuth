@@ -1,0 +1,28 @@
+.brands{
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brands>span{
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.brands >img{
+    cursor: pointer;
+}
+.brands>span{
+    cursor: pointer;
+}
+@media screen and (min-width:992px) {
+    .brands>span{
+        display: none;
+    }
+}
+@media screen and (max-width:991px) {
+       
+}

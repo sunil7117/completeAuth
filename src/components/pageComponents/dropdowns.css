@@ -1,0 +1,32 @@
+.dropdown_menu_box{
+}
+.dropdown_menu{
+    border: 1px solid green;
+    position: relative;
+}
+.buttons{
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+.buttons p{
+    margin-left: 10px;
+    font-size: 0.7em;
+    font-weight: 700;
+}
+.dropdown_list{
+    height: 0px;
+    overflow: hidden;
+    padding-left: 12px;
+    transition: height 1s ease-in-out;
+}
+.dropdown_list_hover{
+height: 250px;
+}
+@media screen and (min-width:992px) {
+    .dropdown_list{
+        border: 1px solid red;
+        width: 100%;
+        position: absolute;
+    }
+}

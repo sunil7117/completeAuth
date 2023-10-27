@@ -1,0 +1,10 @@
+.help{
+    display: flex;
+    gap:20px;
+    align-items: center;
+}
+@media screen and (min-width:762px) {
+    .help{
+        justify-content: flex-end;
+    }   
+}

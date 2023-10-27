@@ -1,0 +1,7 @@
+
+.drawer_logo >img{
+    cursor: pointer;
+}
+.drawer_logo,.drawer_cart,.drawer_menu,.drawer_icons,.drawer_footer{
+    padding: 10px 0;
+}
