@@ -8,8 +8,8 @@ import Home from './pages/Home';
 import UpdatePassword from './components/UpdatePassword';
 import ProtectedRoute from './ProtectedRoute';
 // import Shop from './pages/Shop';
+import Blog from './pages/Blog';
 // import Contact from './pages/Contact';
-// import Blog from './pages/Blog';
 // import Error from './pages/Error';
 function App() {
     return (
@@ -22,9 +22,9 @@ function App() {
       <Route path="/forgetpassword" element={<Forget/>} />
       <Route path="/otpverification" element={<OTPVerify/>} />
       <Route path="/update-password" element={<UpdatePassword/>} />
+      <Route path='/blog' element={<Blog/>}/>
       {/* <Route path='/shop' element={<Shop/>}/>
       <Route path='/contact' element={<Contact/>}/>
-      <Route path='/blog' element={<Blog/>}/>
       <Route path='*' element={<Error/>}/> */}
     </Routes>
     </BrowserRouter>
