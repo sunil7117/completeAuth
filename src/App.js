@@ -22,10 +22,10 @@ function App() {
       <Route path="/forgetpassword" element={<Forget/>} />
       <Route path="/otpverification" element={<OTPVerify/>} />
       <Route path="/update-password" element={<UpdatePassword/>} />
-      {/* <Route path='/shop' element={<Shop/>}/>
+      <Route path='/shop' element={<Shop/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/blog' element={<Blog/>}/>
-      <Route path='*' element={<Error/>}/> */}
+      <Route path='*' element={<Error/>}/>
     </Routes>
     </BrowserRouter>
   );
