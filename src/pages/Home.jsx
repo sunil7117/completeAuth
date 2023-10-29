@@ -16,9 +16,10 @@ const Home = () => {
   return (
     <>
       <Header />
-      <Hero pagename={"home"} />
-      <Product img={prod} data={prodData} />
-      <BlogDetails img={blog} data={blogData} />
+      Lest play
+      {/* <Hero pagename={"home"} /> */}
+      {/* <Product img={prod} data={prodData} />
+      <BlogDetails img={blog} data={blogData} /> */}
       <Footer />
     </>
   );
