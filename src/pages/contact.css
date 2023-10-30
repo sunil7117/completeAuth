@@ -1,0 +1,94 @@
+
+.contact_info{
+    width: 85vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0px 40px 0px;
+}
+.contact_info_box{
+    width: 100%;
+    text-align: center;
+}
+.contact_info_box>p{
+    margin: 15px 0;
+}
+.contact_info_box>p:first-child{
+    color: greenyellow;
+}
+.contact_info_box>p:nth-child(2){
+    font-weight: 800;
+    font-size: 1.5em;
+}
+.contact_message{
+    width: 85vw;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0;
+
+}
+.contact_message >h1{
+    margin: 15px 0;
+}
+.contact_message>form{
+    display: flex;
+    flex-wrap: wrap;
+    gap:12px;
+}
+.contact_message>form >p{
+    width: 100%;
+    /* margin: 12px 0; */
+}
+.contact_message>form >p>input,.contact_message>form >p>textarea{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.2em;
+    color: #bbbb;
+}
+.contact_message>form>p>textarea{
+    resize: none;
+    font-size: 1.2em;
+}
+.contact_message>form button{
+    margin: 0 auto;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    font-weight: 900;
+    background-color: green;
+    color: #fff;
+}
+@media screen and (min-width:576px) {
+    .contact_info_box{
+        width: 50%;
+    }
+    .contact_message>form{
+        gap:26px;
+    } 
+    .contact_message>form>p:nth-child(1),.contact_message>form >p:nth-child(2){
+        width: 47%;    
+    }  
+      
+}
+@media screen and (min-width:768px) {
+    .contact_info_box{
+        width: 25%;
+    }
+    .contact_message>form{
+        gap:25px;
+    }   
+    .contact_message>form>p:nth-child(1),.contact_message>form >p:nth-child(2){
+        width: 48%;    
+    }
+}
+@media screen and (min-width:992px) {
+    .contact_info_box{
+        width: 25%;
+    }
+    .contact_message>form{
+        gap:33px;
+    }   
+    .contact_message>form>p:nth-child(1),.contact_message>form >p:nth-child(2){
+        width: 48%;    
+    }
+}

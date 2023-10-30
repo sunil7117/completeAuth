@@ -8,6 +8,7 @@ import Hero from "../components/Hero";
 import Product from "../components/Product";
 import BlogDetails from "../components/BlogDetails";
 const Home = () => {
+  const pagename = "home";
   const prodData = { name: "crab pool security", price: 40.0 };
   const blogData = {
     title: "Cooking tips make cooking simple",
@@ -15,7 +16,7 @@ const Home = () => {
   };
   return (
     <>
-      <Header />
+      <Header pagename={pagename} />
       Lest play
       {/* <Hero pagename={"home"} /> */}
       {/* <Product img={prod} data={prodData} />
