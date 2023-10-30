@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./headertopbarone.css";
 import {
   Email,
@@ -7,7 +7,6 @@ import {
   Person,
   Twitter,
 } from "@mui/icons-material";
-import { AuthContext } from "../../contextapi/AuthContext";
 import { useNavigate } from "react-router-dom";
 const HeaderTobarOne = () => {
   return (
@@ -55,8 +54,6 @@ export const HeaderTopbarRight = () => {
 };
 
 export const TopbarIcons = () => {
-  const data = useContext(AuthContext);
-  console.log(data);
   return (
     <>
       <p>

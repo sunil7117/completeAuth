@@ -33,13 +33,13 @@ const Menus = () => {
           </span>
           <ul className={open ? "submenu submenuhover" : "submenu"}>
             <li className="submenulist">
-              <NavLink>Shop details</NavLink>
+              <NavLink to="/page/shoping-details">Shop details</NavLink>
             </li>
             <li className="submenulist">
-              <NavLink>Shopping cart</NavLink>
+              <NavLink to="/page/shoping-cart">Shopping cart</NavLink>
             </li>
             <li className="submenulist">
-              <NavLink>Checkout</NavLink>
+              <NavLink to="/page/checkout">Checkout</NavLink>
             </li>
             <li className="submenulist">
               <NavLink>Blog details</NavLink>

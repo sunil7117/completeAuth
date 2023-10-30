@@ -1,0 +1,54 @@
+.product{
+    border: 1px solid red;
+    width: 275px;
+    position: relative;
+}
+.product_detail{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 0;
+    font-size: 1.1em;
+    background-color: #fff;
+    z-index: 200;
+}
+.product_details >p:last-child{
+    font-weight: 900;
+}
+.product_hover{
+    position: absolute;
+    bottom:0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    transition: bottom 0.5s ease-in;
+}
+
+/* let's product_hover  hover effect and move with 360deg icons */
+.product_hover>p{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 5px;
+   transform: rotate(0deg);
+   transition: transform 1s ease-in;
+}
+.product_hover >p:hover{
+    background-color: green;
+    cursor: pointer;
+    transform: rotate(360deg);
+}
+.product:hover  .product_hover{
+    display: flex;
+}
+/* let's swift the product_hover 0 to 80 on hover */
+.product:hover .product_hover{
+    display: flex;
+    bottom: 80px;
+}

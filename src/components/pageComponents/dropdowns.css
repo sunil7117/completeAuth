@@ -19,6 +19,7 @@
     overflow: hidden;
     padding-left: 12px;
     transition: height 1s ease-in-out;
+    background-color: #fff;
 }
 .dropdown_list_hover{
 height: 250px;

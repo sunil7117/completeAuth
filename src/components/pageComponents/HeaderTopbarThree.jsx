@@ -3,11 +3,11 @@ import DropdownMenu from "./DropdownMenu";
 import Searchs from "./Searchs";
 import Helps from "./Helps";
 import "./headertopbarthree.css";
-const HeaderTopbarThree = () => {
+const HeaderTopbarThree = ({ pagename }) => {
   return (
     <div className="header_topbar_three">
       <div className="header_topbar_three_left">
-        <DropdownMenu />
+        <DropdownMenu pagename={pagename} />
       </div>
 
       <div className="header_topbar_three_right">
