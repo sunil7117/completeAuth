@@ -3,12 +3,12 @@ import HeaderTobarOne from "./pageComponents/HeaderTopbarOne";
 import HeaderTopbarTwo from "./pageComponents/HeaderTopbarTwo";
 import HeaderTopbarThree from "./pageComponents/HeaderTopbarThree";
 
-const Header = () => {
+const Header = ({ pagename }) => {
   return (
     <>
       <HeaderTobarOne />
       <HeaderTopbarTwo />
-      <HeaderTopbarThree />
+      <HeaderTopbarThree pagename={pagename} />
     </>
   );
 };
