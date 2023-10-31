@@ -1,6 +1,13 @@
-.blog{
-    border: 1px solid red;
-    width: 372px;
+.blog_details{
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+.blog_details:last-child{
+    margin: 0 0 0 0 ;
+}
+.blog_details>.blog_img>img{
+    width: 100%;
 }
 .blog_detail{
     margin: 20px 0;
@@ -21,4 +28,22 @@
 .blog_detail >p:nth-child(2){
     font-weight: 700;
     font-size: 1.1em;
+}
+.readmore{
+    padding: 12px 30px;
+    border-radius: 15px;
+    border:1px solid #bbb;
+    background-color: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.readmore >span{
+    margin-left: 10px;
+}
+@media screen and (min-width:576px) {
+ .blog_details{
+    width:46%;
+ }  
 }
