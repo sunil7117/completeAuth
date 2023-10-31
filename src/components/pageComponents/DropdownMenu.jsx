@@ -1,12 +1,21 @@
 import { KeyboardArrowDown, Reorder } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./dropdowns.css";
-const DropdownMenu = () => {
+const DropdownMenu = ({ pagename }) => {
   const [dropdoenOpen, dropdwonClose] = useState(true);
   const handleDropdown = () => {
-    dropdwonClose(!dropdoenOpen);
+    if (pagename === "home") {
+      dropdwonClose(dropdoenOpen);
+    } else {
+      dropdwonClose(!dropdoenOpen);
+    }
   };
+
+  useEffect(() => {
+    handleDropdown();
+  }, []);
+
   return (
     <div className="dropdown_menu">
       <div className="dropdown_menu_box">
