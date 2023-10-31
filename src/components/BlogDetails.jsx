@@ -1,11 +1,11 @@
 import React from "react";
 import "./blogDetails.css";
 import { CalendarMonth, Chat, Comment } from "@mui/icons-material";
-const BlogDetails = ({ img, data }) => {
+const BlogDetails = ({ blog, pagename }) => {
   return (
-    <div className="blog">
+    <div className="blog_details">
       <div className="blog_img">
-        <img src={img} alt="blog" />
+        <img src={blog?.img} alt="blog" />
       </div>
       <div className="blog_detail">
         <p>
@@ -16,8 +16,15 @@ const BlogDetails = ({ img, data }) => {
             <Comment />5
           </span>
         </p>
-        <p>{data.title}</p>
-        <p>{data.para}</p>
+        <p>{blog?.title}</p>
+        <p>{blog?.para}</p>
+        {pagename === "blog" && (
+          <p>
+            <button className="readmore">
+              read more <span>--</span>
+            </button>
+          </p>
+        )}
       </div>
     </div>
   );
