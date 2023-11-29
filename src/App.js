@@ -15,13 +15,14 @@ function App() {
     return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<ProtectedRoute Rout={Home} />} />
-      <Route path="/home" element={<ProtectedRoute Rout={Home} />} />
+      <Route path="/" element={<Home/>} />
+      {/* <Route path="/home" element={<ProtectedRoute Rout={Home} />} /> */}
       <Route path="/signup" element={<Register/>} />
       <Route path="/login" element={<Signin/>} />
       <Route path="/forgetpassword" element={<Forget/>} />
       <Route path="/otpverification" element={<OTPVerify/>} />
       <Route path="/update-password" element={<UpdatePassword/>} />
+      <Route path="/home" element={<Home/>} />
       <Route path='/blog' element={<Blog/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/shop' element={<Shop/>}/>

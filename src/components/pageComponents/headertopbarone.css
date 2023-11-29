@@ -45,6 +45,8 @@
 }
 .header_topbar_right_text{
     cursor: pointer;
+    display: flex;
+    gap:5px;
 }
 
 

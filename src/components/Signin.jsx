@@ -5,7 +5,8 @@ import { Login } from "../service/api";
 import { AuthContext } from "../contextapi/AuthContext";
 const Signin = () => {
   const navigate = useNavigate();
-  const setAuth = useContext(AuthContext).setauth;
+  const { setauth, login, setlogin } = useContext(AuthContext);
+  console.log(login);
   const initialValue = {
     email: "",
     password: "",
@@ -23,7 +24,8 @@ const Signin = () => {
         "refresh-token",
         `Bearer ${info.data.refreshToken}`
       );
-      setAuth(info.data.userdata);
+      setauth(info.data.userdata);
+      setlogin("logout");
       navigate("/home");
     }
     if (info.status === 403) {

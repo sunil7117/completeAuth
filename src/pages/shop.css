@@ -1,0 +1,95 @@
+/* .shop_right_bottom_selection{
+    display: flex;
+    border: 1px solid red;
+    justify-content: space-between;
+    color: #bbb;
+}
+.shop_right_bottom_selection >p>span{
+   margin: 0 2px;
+}
+.shop_right_bottom_selection >p:nth-child(1) span{
+    cursor: pointer; 
+}
+.shop_right_bottom_selection >p:nth-child(3) span{
+   cursor: pointer; 
+}
+/* ===================carousel handmade============== */
+
+/* Fresh shop css */
+.shop_section{
+    border: 1px solid red;
+    width: 85vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.shop_section_left{
+}
+.shop_section_right{
+    background-color: red;
+}
+.shop_section_style{
+    display: flex;
+    gap:80px;
+}
+.shop_section_heading >h2{
+    font-weight: 900;
+    margin: 20px 0;
+}
+.shop_section_text{
+    border: 1px solid blue;
+}
+.shop_section_text_link{
+    margin: 15px 0;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.circle{
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    /* border: 2px solid rgb(177, 174, 174); */
+}
+.shop_section_text>button{
+    text-transform: capitalize;
+    padding: 10px 20px;
+    border: none;
+    margin-right: 30px;
+    font-size: 0.7em;
+}
+.filter{
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blue;
+}
+.filter_center{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.filter_right{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.shop_product{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.shopproduct{
+    width: 100%;
+}
+@media screen and (min-width:768px){
+    .shop_section{
+        flex-direction: row;
+    }
+    .shop_section_left{
+        width: 30%;
+    }
+    .shop_section_right{
+        width: 70%;
+    }
+}

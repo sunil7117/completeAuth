@@ -1,36 +1,41 @@
 import React from "react";
 import "./product.css";
-import prod from "../assets/img/product/product-1.jpg";
 import { Link } from "react-router-dom";
 import {
-  HeartBroken,
-  Rotate90DegreesCcw,
+  Favorite,
+  ScreenRotationAlt,
   ShoppingBag,
+  ShoppingCart,
 } from "@mui/icons-material";
-const Product = ({ img, data }) => {
-  console.log(data);
+const Product = ({ product }) => {
   return (
     <div className="product">
       <div className="product_details">
         <div className="product_img">
-          <img src={img} alt="productimg" />
+          <img src={product?.img} alt="productimg" />
         </div>
         <div className="product_detail">
           <p>
-            <Link to="/alsfj"> {data.name}</Link>
+            <Link to="/alsfj"> {product?.name}</Link>
           </p>
-          <p>${data.price}</p>
+          <p>${product?.price}</p>
         </div>
       </div>
       <div className="product_hover">
         <p>
-          <HeartBroken className="hover_icons" />
+          <Favorite sx={{ width: 18, height: 18 }} className="hover_icons" />
         </p>
         <p>
-          <Rotate90DegreesCcw />
+          <ScreenRotationAlt
+            sx={{ width: 18, height: 18 }}
+            className="hover_icons"
+          />
         </p>
         <p>
-          <ShoppingBag />
+          <ShoppingCart
+            sx={{ width: 18, height: 18 }}
+            className="hover_icons"
+          />
         </p>
       </div>
     </div>

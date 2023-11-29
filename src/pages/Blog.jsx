@@ -77,10 +77,14 @@ const Blog = () => {
             </div>
           </div>
         </div>
-        <div className="blog_right">
-          {blogData.map((blog) => (
-            <BlogDetails blog={blog} pagename={pagename} />
-          ))}
+        <div className="blog_right_section">
+          <div className="blog_right">
+            {blogData.map((blog) => (
+              <div className="blogs">
+                <BlogDetails blog={blog} pagename={pagename} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <Footer />
