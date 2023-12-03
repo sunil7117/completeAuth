@@ -8,8 +8,9 @@ import { AuthContext } from './contextapi/AuthContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const Root=()=>{
   const[auth,setauth]=useState(null)
+  const[loginstate,setloginstate]=useState("login")
 return(<React.StrictMode>
-  <AuthContext.Provider value={{auth:auth,setauth:setauth}}>
+  <AuthContext.Provider value={{auth:auth,setauth:setauth,login:loginstate,setlogin:setloginstate}}>
     <App />
   </AuthContext.Provider>
 </React.StrictMode>)

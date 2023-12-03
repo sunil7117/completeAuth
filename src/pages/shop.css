@@ -1,0 +1,112 @@
+
+/* ===================carousel handmade============== */
+
+/* Fresh shop css */
+.shop_section{
+    width: 85vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.shop_section_left{
+}
+.shop_section_right{
+    
+}
+.hr{
+    margin-top: 30px;
+}
+.shop_section_style{
+    display: flex;
+    gap:80px;
+}
+.shop_section_heading >h2{
+    font-weight: 900;
+    margin: 20px 0;
+}
+.shop_section_text{
+    
+}
+.shop_section_text_link{
+    margin: 15px 0;
+    cursor: pointer;
+    text-transform: capitalize;
+    
+}
+.circle{
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    /* border: 2px solid rgb(177, 174, 174); */
+}
+.shop_section_text>button{
+    text-transform: capitalize;
+    padding: 10px 20px;
+    border: none;
+    margin: 10px;
+    font-size: 0.7em;
+}
+.filter{
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+.filter_center{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.filter_right{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.shop_product{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shopproduct{
+    width: 100%;
+}
+@media screen and (min-width:576px){
+    .shop_product{
+        gap:39px;
+    }
+    .shopproduct{
+        width: 46%;
+    }
+}
+@media screen and (min-width:768px){
+    .shop_section{
+        flex-direction: row;
+    }
+    .shop_section_left{
+        width: 30%;
+    }
+    .shop_section_right{
+        width: 70%;
+    }
+    .shop_section_style{
+        gap:35px;
+    }
+    .shop_product{
+        gap:37px;
+    }
+    .shopproduct{
+        width: 46%;
+    }
+}
+@media screen and (min-width:992px){
+    
+    .shop_section_style{
+        gap:35px;
+    }
+    .shop_product{
+        gap:29px;
+    }
+    .shopproduct{
+        width: 30.1%
+    }
+}

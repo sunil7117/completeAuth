@@ -7,6 +7,7 @@
 .buttons{
     border: 1px solid red;
     display: flex;
+    background-color: bisque;
     justify-content: space-between;
 }
 .buttons p{
@@ -22,7 +23,12 @@
     background-color: #fff;
 }
 .dropdown_list_hover{
-height: 250px;
+    height: 440px;
+}
+.dropdown_list_item{
+    cursor: pointer;
+    margin: 15px 0;
+    padding: 2px ;
 }
 @media screen and (min-width:992px) {
     .dropdown_list{

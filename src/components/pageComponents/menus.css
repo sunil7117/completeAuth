@@ -1,10 +1,71 @@
 
+
+/* Fresh css for menus */
+.menu{
+    position:relative;
+}
+.menulist{
+    border-bottom: 1px solid red;
+    padding-bottom: 8px;
+    margin: 10px 0;
+    position: relative;
+}
+.navlink{
+    text-transform: capitalize;
+    display: flex;
+    color: black;
+    align-items: center;
+}
+.navlink:hover{
+    color: yellowgreen;
+}
+.submenu{
+    width: 100%;
+}
+.d-none{
+    display: none;
+}
+.submenulist{
+    padding-top: 8px;
+    margin: 10px 0;
+    border-top: 1px solid red;
+}
+@media screen and (min-width:992px){
+    .menu{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .menulist{
+        background-color: red;
+    }
+    .d-none{
+        display: block;
+        position: absolute;
+        width: 170px;
+        left: 0px;
+        top: 32px;
+        background-color: black;
+        z-index: 10;
+    }
+    .submenulist{
+        padding-top: 0px;
+        margin: 0px 0;
+        border-top: 0;
+    }
+    .submenulist>.navlink{
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+/* Fresh css for menus */
+/* 
 .menu{
     display: flex;
 }
 .menulist{
     cursor: pointer;
-    /* margin: 10px; */
     display: inline-block;
     padding: 10px 15px;
     position: relative;
@@ -14,6 +75,7 @@
 .submenu{
     display: none;
     position: absolute;
+    display: block;
 }
 .arrow{
     display: none;
@@ -22,9 +84,9 @@
 
 .submenuhover{
     display: block;
-}
+} */
 
-@media screen and (min-width:992px) {
+/* @media screen and (min-width:992px) {
     .menu{
         justify-content: space-between;
     }
@@ -32,7 +94,8 @@
         font-weight: 700;
     }
     .submenu{
-        color: #fff;
+        color: pink;
+        background-color: red;
     }
     .menulist:hover .submenu{
         display: block;
@@ -44,18 +107,17 @@
     }
     .submenu{
         width: 150px;
-        background-color: black;
         font-size: 0.8;
         font-weight: 500;
-        color: #fff;
+        color: #fff!important;
     
     }
     .submenulist{
-        /* padding: 10px 0 0 0px; */
+        padding: 10px 0 0 0px;
         padding: 10px 0 10px 10px;
     }
-}
-@media screen and (max-width:991px) {
+} */
+/* @media screen and (max-width:991px) {
     .menulist{
         display: inline-block;
         padding:15px 0 15px 0;
@@ -75,4 +137,4 @@
         flex-direction: column;
         background-color: #fff;
     }    
-}
+} */

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./headertopbarone.css";
 import {
   Email,
@@ -8,6 +8,8 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contextapi/AuthContext";
+import { Avatar } from "@mui/material";
 const HeaderTobarOne = () => {
   return (
     <>
@@ -34,11 +36,21 @@ export const HeaderTopbarLeft = () => {
   );
 };
 export const HeaderTopbarRight = () => {
+  const { auth, setauth, login, setlogin } = useContext(AuthContext);
+  console.log(login);
+  console.log(auth);
   const navigate = useNavigate();
-  const handleLogout = () => {
-    sessionStorage.clear();
-    navigate("/login");
-    console.log("checked error");
+  const handleloginToggle = () => {
+    if (auth === null) {
+      alert("login required");
+      navigate("/login");
+    }
+    if (login === "logout") {
+      alert("already login");
+      sessionStorage.clear();
+      setauth(null);
+      setlogin("login");
+    }
   };
   return (
     <div className="header_topbar_right">
@@ -46,8 +58,11 @@ export const HeaderTopbarRight = () => {
         <TopbarIcons />
       </p>
       <p className="header_topbar_right_text">Language</p>
-      <p className="header_topbar_right_text" onClick={handleLogout}>
-        <Person sx={{ fontSize: 20 }} /> Logout
+      <p className="header_topbar_right_text" onClick={handleloginToggle}>
+        <Avatar sx={{ width: 22, height: 22 }}>
+          {auth !== null ? "Hi" : <Person sx={{ width: 20, height: 20 }} />}
+        </Avatar>
+        {auth === null ? "Login" : "Logout"}
       </p>
     </div>
   );

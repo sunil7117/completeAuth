@@ -11,55 +11,50 @@ const Menus = () => {
     <div className="menus">
       <ul className="menu">
         <li className="menulist">
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
+          <NavLink to="/" className="navlink">
             Home
           </NavLink>
         </li>
         <li className="menulist">
-          <NavLink
-            to="/shop"
-            className={({ isActive }) => (isActive ? "active" : "bye")}
-          >
-            Shop
+          <NavLink to="/shop" className="navlink">
+            shop
           </NavLink>
         </li>
         <li className="menulist" onClick={handleopensubmenu}>
-          page
-          <span className="arrow">
-            <KeyboardArrowDown />
-          </span>
-          <ul className={open ? "submenu submenuhover" : "submenu"}>
+          <NavLink className="navlink">
+            page <KeyboardArrowDown />
+          </NavLink>
+          <ul className={open ? "submenu" : "d-none"}>
             <li className="submenulist">
-              <NavLink to="/page/shoping-details">Shop details</NavLink>
+              <NavLink to="/shoping-cart" className="navlink">
+                shopping cart
+              </NavLink>
             </li>
             <li className="submenulist">
-              <NavLink to="/page/shoping-cart">Shopping cart</NavLink>
+              <NavLink to="/shopping-details" className="navlink">
+                shopping details
+              </NavLink>
             </li>
             <li className="submenulist">
-              <NavLink to="/page/checkout">Checkout</NavLink>
+              <NavLink to="/checkout" className="navlink">
+                checkout
+              </NavLink>
             </li>
             <li className="submenulist">
-              <NavLink>Blog details</NavLink>
+              <NavLink to="/blog-details" className="navlink">
+                blog details
+              </NavLink>
             </li>
           </ul>
         </li>
         <li className="menulist">
-          <NavLink
-            to="/blog"
-            className={({ isActive }) => (isActive ? "active" : "bye")}
-          >
-            Blog
+          <NavLink to="/blog" className="navlink">
+            blog
           </NavLink>
         </li>
         <li className="menulist">
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => (isActive ? "active" : "bye")}
-          >
-            Contact
+          <NavLink to="/contact" className="navlink">
+            contact
           </NavLink>
         </li>
       </ul>
