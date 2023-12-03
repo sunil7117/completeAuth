@@ -1,3 +1,12 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-export const loginStateContext = createContext(null);
+const loginStateContext = createContext(null);
+const LoginStateContext = ({ children }) => {
+  const [loginstate, setloginstate] = useState("login");
+
+  return (
+    <LoginStateContext.Provider value={theme}>
+      {children}
+    </LoginStateContext.Provider>
+  );
+};

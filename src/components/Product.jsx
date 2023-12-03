@@ -19,6 +19,8 @@ const Product = ({ product }) => {
             <Link to="/alsfj"> {product?.name}</Link>
           </p>
           <p>${product?.price}</p>
+          <p>{product?.color}</p>
+          <p>{product?.tag}</p>
         </div>
       </div>
       <div className="product_hover">

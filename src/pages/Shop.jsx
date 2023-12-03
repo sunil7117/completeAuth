@@ -8,17 +8,86 @@ import { GridView, List } from "@mui/icons-material";
 import Product from "../components/Product";
 
 const prodData = [
-  { name: "crab pool security", tag: "vegetables", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fastfood", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "vegetables", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fruits", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "vegetables", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fruits", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fruits", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fastfood", price: 40.0, img: prod },
+  {
+    name: "crab pool security",
+    color: "white",
+    tag: "vegetables",
+    price: 40.0,
+    img: prod,
+  },
+  {
+    name: "crab pool security",
+    color: "red",
+    tag: "fastfood",
+    price: 40.0,
+    img: prod,
+  },
+  {
+    name: "crab pool security",
+    color: "blue",
+    tag: "vegetables",
+    price: 40.0,
+    img: prod,
+  },
+  {
+    name: "crab pool security",
+    color: "white",
+    tag: "fruits",
+    price: 40.0,
+    img: prod,
+  },
+  {
+    name: "crab pool security",
+    color: "white",
+    tag: "vegetables",
+    price: 40.0,
+    img: prod,
+  },
+  {
+    name: "crab pool security",
+    color: "red",
+    tag: "fruits",
+    price: 40.0,
+    img: prod,
+  },
+  {
+    name: "crab pool security",
+    color: "blue",
+    tag: "fruits",
+    price: 40.0,
+    img: prod,
+  },
+  {
+    name: "crab pool security",
+    color: "red",
+    tag: "fastfood",
+    price: 40.0,
+    img: prod,
+  },
 ];
 const Shop = () => {
   const pagename = "shop";
+  const [sortData, setsortData] = useState(prodData);
+  const [totalproductcount, settotalproductcount] = useState(sortData.length);
+
+  const chooseColor = (color) => {
+    const newsortData =
+      color === "all"
+        ? prodData
+        : prodData.filter((item) => item.color === color);
+    setsortData(newsortData);
+    settotalproductcount(newsortData.length);
+  };
+
+  const searchButtonValue = (btnvalue) => {
+    const newsortData =
+      btnvalue === "all"
+        ? prodData
+        : prodData.filter((item) => item.tag === btnvalue);
+    setsortData(newsortData);
+    settotalproductcount(newsortData.length);
+  };
+  useEffect(() => {});
   return (
     <>
       <Header />
@@ -30,7 +99,12 @@ const Shop = () => {
           </div>
           <ul className="shop_section_text">
             <li className="shop_section_text_link">Fresh meat</li>
-            <li className="shop_section_text_link">Vegetables</li>
+            <li
+              className="shop_section_text_link"
+              onClick={() => searchButtonValue("vegetables")}
+            >
+              Vegetables
+            </li>
             <li className="shop_section_text_link">fruits and nuts gifts</li>
             <li className="shop_section_text_link">ocean foods</li>
             <li className="shop_section_text_link">butter & eggs</li>
@@ -45,7 +119,10 @@ const Shop = () => {
           </div>
           <div className="shop_section_style">
             <ul className="shop_section_text">
-              <li className="shop_section_text_link">
+              <li
+                className="shop_section_text_link"
+                onClick={() => chooseColor("white")}
+              >
                 <div
                   className="circle"
                   style={{
@@ -55,14 +132,20 @@ const Shop = () => {
                 ></div>{" "}
                 <div style={{ marginLeft: 28 }}>white</div>
               </li>
-              <li className="shop_section_text_link">
+              <li
+                className="shop_section_text_link"
+                onClick={() => chooseColor("red")}
+              >
                 <div
                   className="circle"
                   style={{ border: "2px solid red", background: "red" }}
                 ></div>{" "}
                 <div style={{ marginLeft: 28 }}>red</div>
               </li>
-              <li className="shop_section_text_link">
+              <li
+                className="shop_section_text_link"
+                onClick={() => chooseColor("blue")}
+              >
                 <div
                   className="circle"
                   style={{ border: "2px solid blue", background: "blue" }}
@@ -110,7 +193,7 @@ const Shop = () => {
         </div>
         <div className="shop_section_right">
           <div className="shop_section_right_top"> slider</div>
-          <hr />
+          <hr className="hr" />
           <div className="shop_section_right_middle">
             <div className="filter">
               <div className="filter_left">
@@ -119,7 +202,7 @@ const Shop = () => {
                 </div>
               </div>
               <div className="filter_center">
-                <h4>16</h4>
+                <h4>{totalproductcount}</h4>
                 <p>product found</p>
               </div>
               <div className="filter_right">
@@ -129,7 +212,7 @@ const Shop = () => {
             </div>
             <div className="product_section">
               <div className="shop_product">
-                {prodData.map((data) => (
+                {sortData.map((data) => (
                   <div className="shopproduct">
                     <Product product={data} />
                   </div>
