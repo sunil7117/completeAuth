@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
-import prod from "../assets/img/product/product-1.jpg";
 import blog from "../assets/img/blog/blog-1.jpg";
 import banner1 from "../assets/img/banner/banner-1.jpg";
 import banner2 from "../assets/img/banner/banner-2.jpg";
@@ -8,16 +7,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Product from "../components/Product";
 import BlogDetails from "../components/BlogDetails";
-const prodData = [
-  { name: "crab pool security", tag: "vegetables", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fastfood", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "vegetables", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fruits", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "vegetables", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fruits", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fruits", price: 40.0, img: prod },
-  { name: "crab pool security", tag: "fastfood", price: 40.0, img: prod },
-];
+import { useSelector } from "react-redux";
 const blogData = [
   {
     img: blog,
@@ -36,16 +26,18 @@ const blogData = [
   },
 ];
 const Home = () => {
-  const [sortData, setsortData] = useState(prodData);
-
+  const { product, loading } = useSelector((state) => state.data);
+  const [sortData, setsortData] = useState([]);
   const searchButtonValue = (btnvalue) => {
     const newsortData =
       btnvalue === "all"
-        ? prodData
-        : prodData.filter((item) => item.tag === btnvalue);
+        ? product
+        : product.filter((item) => item.product_tag === btnvalue);
     setsortData(newsortData);
   };
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setsortData(product);
+  }, [product]);
   return (
     <>
       <Header pagename={"home"} />

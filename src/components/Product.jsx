@@ -1,26 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./product.css";
-import { Link } from "react-router-dom";
-import {
-  Favorite,
-  ScreenRotationAlt,
-  ShoppingBag,
-  ShoppingCart,
-} from "@mui/icons-material";
+import { Link, useNavigate } from "react-router-dom";
+import { Favorite, ScreenRotationAlt, ShoppingCart } from "@mui/icons-material";
+import { ProductCountContext } from "../contextapi/ProductCount";
 const Product = ({ product }) => {
+  const navigate = useNavigate();
+  const { addcart, setaddcart } = useContext(ProductCountContext);
+  const addtocart = () => {
+    // setaddcart([...addcart, product]);
+  };
+  const shoppingcart = async (id) => {
+    navigate(`/shoping-cart?_id=${id}`);
+  };
   return (
-    <div className="product">
+    <div className="product" onClick={() => shoppingcart(product?._id)}>
       <div className="product_details">
         <div className="product_img">
-          <img src={product?.img} alt="productimg" />
+          <img
+            src={`http://localhost:8000/${product?.product_image}`}
+            alt="productimg"
+          />
         </div>
         <div className="product_detail">
           <p>
-            <Link to="/alsfj"> {product?.name}</Link>
+            <Link to="/alsfj"> {product?.product_name}</Link>
           </p>
-          <p>${product?.price}</p>
-          <p>{product?.color}</p>
-          <p>{product?.tag}</p>
+          <p>${product?.product_price}</p>
         </div>
       </div>
       <div className="product_hover">
@@ -33,7 +38,7 @@ const Product = ({ product }) => {
             className="hover_icons"
           />
         </p>
-        <p>
+        <p onClick={addtocart}>
           <ShoppingCart
             sx={{ width: 18, height: 18 }}
             className="hover_icons"

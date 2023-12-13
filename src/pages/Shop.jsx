@@ -1,80 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./shop.css";
-import prod from "../assets/img/product/product-1.jpg";
 import Hero from "../components/Hero";
 import { GridView, List } from "@mui/icons-material";
 import Product from "../components/Product";
-
-const prodData = [
-  {
-    name: "crab pool security",
-    color: "white",
-    tag: "vegetables",
-    price: 40.0,
-    img: prod,
-  },
-  {
-    name: "crab pool security",
-    color: "red",
-    tag: "fastfood",
-    price: 40.0,
-    img: prod,
-  },
-  {
-    name: "crab pool security",
-    color: "blue",
-    tag: "vegetables",
-    price: 40.0,
-    img: prod,
-  },
-  {
-    name: "crab pool security",
-    color: "white",
-    tag: "fruits",
-    price: 40.0,
-    img: prod,
-  },
-  {
-    name: "crab pool security",
-    color: "white",
-    tag: "vegetables",
-    price: 40.0,
-    img: prod,
-  },
-  {
-    name: "crab pool security",
-    color: "red",
-    tag: "fruits",
-    price: 40.0,
-    img: prod,
-  },
-  {
-    name: "crab pool security",
-    color: "blue",
-    tag: "fruits",
-    price: 40.0,
-    img: prod,
-  },
-  {
-    name: "crab pool security",
-    color: "red",
-    tag: "fastfood",
-    price: 40.0,
-    img: prod,
-  },
-];
+import { ProductCountContext } from "../contextapi/ProductCount";
+import { useSelector } from "react-redux";
 const Shop = () => {
   const pagename = "shop";
-  const [sortData, setsortData] = useState(prodData);
+  const { product } = useSelector((state) => state.data);
+  const [sortData, setsortData] = useState([]);
   const [totalproductcount, settotalproductcount] = useState(sortData.length);
 
   const chooseColor = (color) => {
     const newsortData =
       color === "all"
-        ? prodData
-        : prodData.filter((item) => item.color === color);
+        ? product
+        : product.filter((item) => item.product_color === color);
     setsortData(newsortData);
     settotalproductcount(newsortData.length);
   };
@@ -82,12 +25,14 @@ const Shop = () => {
   const searchButtonValue = (btnvalue) => {
     const newsortData =
       btnvalue === "all"
-        ? prodData
-        : prodData.filter((item) => item.tag === btnvalue);
+        ? product
+        : product.filter((item) => item.product_tag === btnvalue);
     setsortData(newsortData);
     settotalproductcount(newsortData.length);
   };
-  useEffect(() => {});
+  useEffect(() => {
+    setsortData(product);
+  }, [product]);
   return (
     <>
       <Header />

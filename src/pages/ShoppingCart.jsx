@@ -1,32 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import prod from "../assets/img/product/product-1.jpg";
 import "./shopping-cart.css";
 import { HeartBroken } from "@mui/icons-material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { addtocartdata, getUser, getproductbysearch } from "../service/api";
+import { useDispatch, useSelector } from "react-redux";
+import { cartadd } from "../redux/loginSlice";
 
-const shopping = {
-  name: "crab pool security",
-  color: "white",
-  tag: "vegetables",
-  price: 40.0,
-  ratting: 4,
-  review: "18 reviews",
-  details:
-    "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.",
-  img: prod,
-  instock: "in stock",
-  weight: "0.5kg",
-};
 const ShoppingCart = () => {
   const pagename = "shopping-cart";
+  const [shopping, setshopping] = useState({});
+
   const [path, setpath] = useState("description");
   const [route, setroute] = useState("description");
+
+  // To get access of url
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const productId = queryParams.get("_id");
+  // To get access of url
+
+  // get access of central store
+  const { getuser, cart } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const addRouter = (route) => {
     setpath(route);
     setroute(route);
   };
+  const addtocart = async () => {
+    if (getuser) {
+      const cartData = {
+        _id: getuser._id,
+        product_info: shopping,
+      };
+      const savecart = await addtocartdata(cartData); //this request send to serve for save product data in usercart
+      if (savecart.status === 200) {
+        navigate("/shopping-details");
+      }
+      // how to write code here for update cart for cart component
+    } else {
+      alert("please login first");
+      navigate("/login?pagename=shopping-details");
+    }
+  };
+  const getidfromurl = async (id) => {
+    try {
+      const { data } = await getproductbysearch(id);
+      setshopping(data);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getidfromurl(productId);
+  }, [productId]);
   return (
     <div>
       <Header />
@@ -35,28 +65,27 @@ const ShoppingCart = () => {
         <div className="shopping-cart_top">
           <div className="shopping-cart_top_left">
             <div className="shopping-cart_top_left_img">
-              <img src={shopping?.img} alt="" />
+              <img
+                src={`http://localhost:8000/${shopping?.product_image}`}
+                alt=""
+              />
             </div>
             <div className="shopping-cart_top_left_subimg"></div>
           </div>
           <div className="shopping-cart_top_right">
-            <h1>{shopping?.name}</h1>
+            <h1>{shopping?.product_name}</h1>
             <p>
-              <span>{shopping?.ratting}</span>
-              <span>({shopping?.review})</span>
+              <span>{shopping?.product_ratting}</span>
+              <span>({shopping?.product_review})</span>
             </p>
-            <h2>${shopping?.price}</h2>
-            <p>{shopping?.details}</p>
+            <h2>${shopping?.product_price}</h2>
+            <p>{shopping?.product_details}</p>
             <div className="cart-buttons">
               <div className="cart-button_left">
-                <div className="cart_item_count">
-                  <button>-</button>
-                  <span>0</span>
-                  <button>+</button>
-                </div>
+                {/* <AddMinusButtons id={productId} /> */}
               </div>
               <div className="cart-button_middle">
-                <button>Add to cart</button>
+                <button onClick={addtocart}>Add to cart</button>
               </div>
               <div className="cart-button_right">
                 <button>
@@ -68,7 +97,11 @@ const ShoppingCart = () => {
             <div className="additional_info_box">
               <div className="additional_info">
                 <h4 className="additional_info_head">Availability</h4>
-                <p className="additional_info_detail">{shopping?.instock}</p>
+                <p className="additional_info_detail">
+                  {shopping?.product_stock === true
+                    ? "in stock"
+                    : "out of stock"}
+                </p>
               </div>
 
               <div className="additional_info">
@@ -78,7 +111,9 @@ const ShoppingCart = () => {
 
               <div className="additional_info">
                 <h4 className="additional_info_head">weight</h4>
-                <p className="additional_info_detail">{shopping?.weight}</p>
+                <p className="additional_info_detail">
+                  {shopping?.product_weight}
+                </p>
               </div>
 
               <div className="additional_info">
