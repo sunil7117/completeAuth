@@ -1,12 +1,20 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./common.css";
 import { Login } from "../service/api";
-import { AuthContext } from "../contextapi/AuthContext";
+import { useDispatch, useSelector } from "react-redux";
+import { loginFailure, loginStart, loginSuccess } from "../redux/loginSlice";
 const Signin = () => {
   const navigate = useNavigate();
-  const { setauth, login, setlogin } = useContext(AuthContext);
-  console.log(login);
+
+  // To get access of url
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const currentpage = queryParams.get("pagename");
+  // To get access of url
+
+  const { getuser, isFailure } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
   const initialValue = {
     email: "",
     password: "",
@@ -16,22 +24,27 @@ const Signin = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const handleSignin = async (e) => {
+    dispatch(loginStart());
     const info = await Login(user);
-    if (info.status === 200) {
-      console.log(info);
+    if (info?.status === 200) {
       sessionStorage.setItem("access-token", `Bearer ${info.data.accessToken}`);
       sessionStorage.setItem(
         "refresh-token",
         `Bearer ${info.data.refreshToken}`
       );
-      setauth(info.data.userdata);
-      setlogin("logout");
-      navigate("/home");
+      dispatch(loginSuccess(info?.data?.userdata));
+      if (currentpage) {
+        navigate(`/${currentpage}`);
+      } else {
+        navigate("/home");
+      }
     }
-    if (info.status === 403) {
+    if (info?.status === 403) {
+      dispatch(loginFailure("email/password wrong. Please check first"));
       return alert("email/password wrong. Please check first");
     }
-    if (info.status === 404) {
+    if (info?.status === 404) {
+      dispatch(loginFailure("email/password wrong. Please check first"));
       return alert("email/password not found  yet. Please check first");
     }
   };

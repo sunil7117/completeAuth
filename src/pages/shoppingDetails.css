@@ -1,0 +1,41 @@
+.shopping-details_section{
+    width: 85%;
+    margin: 0 auto;
+}
+table{
+    width: 100%;
+}
+thead td{
+    font-weight: 900;
+    font-size: 20px;
+    padding: 20px 5px;
+    text-transform: capitalize;
+}
+tbody td{
+    font-size: 18px;
+    padding: 20px 5px;
+    text-transform: capitalize;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+}
+.itemcenter{
+    align-items: center;
+}
+.justifycenter{
+    justify-content: center;
+}
+.justifybetween{
+    justify-content: space-between;
+}
+tbody td img{
+    width: 90px;
+    height: 90px;
+}
+tbody td:nth-child(2) p,tbody td:nth-child(4) p{
+    font-weight: 800
+}
+.g-10{
+    gap:10px;
+}

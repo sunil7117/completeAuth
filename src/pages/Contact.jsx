@@ -13,9 +13,8 @@ import { ValidationError, useForm } from "@formspree/react";
 
 const Contact = () => {
   const pagename = "contact";
-  console.log(process.env.REACT_APP_RECEVIEDEMAIL);
+
   const [state, handleSubmit] = useForm(process.env.REACT_APP_RECEVIEDEMAIL);
-  console.log(state);
   if (state.succeeded) {
     alert("Our team contact you shortly...");
   }

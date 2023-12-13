@@ -24,7 +24,7 @@ const Menus = () => {
           <NavLink className="navlink">
             page <KeyboardArrowDown />
           </NavLink>
-          <ul className={open ? "submenu" : "d-none"}>
+          {/* <ul className={open ? "submenu" : "d-none"}>
             <li className="submenulist">
               <NavLink to="/shoping-cart" className="navlink">
                 shopping cart
@@ -45,7 +45,7 @@ const Menus = () => {
                 blog details
               </NavLink>
             </li>
-          </ul>
+          </ul> */}
         </li>
         <li className="menulist">
           <NavLink to="/blog" className="navlink">

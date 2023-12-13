@@ -4,15 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContext } from './contextapi/AuthContext';
+import ProductCount from './contextapi/ProductCount';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const Root=()=>{
-  const[auth,setauth]=useState(null)
-  const[loginstate,setloginstate]=useState("login")
 return(<React.StrictMode>
-  <AuthContext.Provider value={{auth:auth,setauth:setauth,login:loginstate,setlogin:setloginstate}}>
-    <App />
-  </AuthContext.Provider>
+  <Provider store={store}>
+    <App/>
+  </Provider>
 </React.StrictMode>)
 }
 root.render(
