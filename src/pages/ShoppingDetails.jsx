@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import AddMinusButtons from "../components/pageComponents/AddMinusButtons";
 const ShoppingDetails = () => {
   const pagename = "shopping-details";
-  const { getuser } = useSelector((state) => state.login);
-  const cart = getuser?.user_cart ?? [];
+  const { cart } = useSelector((state) => state.login);
+
   return (
     <div>
       <Header pagename={pagename} />
@@ -24,35 +24,38 @@ const ShoppingDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((item) => (
-              <tr>
-                <td>
-                  <div className="flex itemcenter g-10">
-                    <img
-                      src={`http://localhost:8000/${item?.product_image}`}
-                      alt=""
-                    />
-                    <p>{item?.product_name}</p>
-                  </div>
-                </td>
-                <td>
-                  <div className="flex">
-                    <p>{item?.product_price}</p>
-                  </div>
-                </td>
-                <td>
-                  <div className="flex justifycenter">
-                    <AddMinusButtons id={item?._id} />
-                  </div>
-                </td>
-                <td>
-                  <div className="flex justifybetween">
-                    {/* <p>{item?.product_price * increase}</p> */}
-                    <span>X</span>
-                  </div>
-                </td>
-              </tr>
-            ))}
+            {cart.map((item) => {
+              console.log(item);
+              return (
+                <tr>
+                  <td>
+                    <div className="flex itemcenter g-10">
+                      <img
+                        src={`http://localhost:8000/${item?.product_image}`}
+                        alt=""
+                      />
+                      <p>{item?.product_name}</p>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="flex">
+                      <p>{item?.product_price}</p>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="flex justifycenter">
+                      <AddMinusButtons id={item?._id} />
+                    </div>
+                  </td>
+                  <td>
+                    <div className="flex justifybetween">
+                      {/* <p>{item?.product_price * increase}</p> */}
+                      <span>X</span>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
