@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Favorite, ScreenRotationAlt, ShoppingCart } from "@mui/icons-material";
 import { ProductCountContext } from "../contextapi/ProductCount";
 const Product = ({ product }) => {
+  const api=process.env.REACT_APP_SERVER||"http://localhost:8000"
   const navigate = useNavigate();
   const { addcart, setaddcart } = useContext(ProductCountContext);
   const addtocart = () => {
@@ -17,7 +18,7 @@ const Product = ({ product }) => {
       <div className="product_details">
         <div className="product_img">
           <img
-            src={`http://localhost:8000/${product?.product_image}`}
+            src={`&{api}/${product?.product_image}`}
             alt="productimg"
           />
         </div>
