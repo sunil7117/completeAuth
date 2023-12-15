@@ -31,7 +31,7 @@ const ShoppingDetails = () => {
                   <td>
                     <div className="flex itemcenter g-10">
                       <img
-                        src={`http://localhost:8000/${item?.product_image}`}
+                        src={`https://complete-auth-api.vercel.app/${item?.product_image}`}
                         alt=""
                       />
                       <p>{item?.product_name}</p>
