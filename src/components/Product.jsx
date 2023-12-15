@@ -18,7 +18,7 @@ const Product = ({ product }) => {
       <div className="product_details">
         <div className="product_img">
           <img
-            src={`&{api}/${product?.product_image}`}
+            src={`https://complete-auth-api.vercel.app/${product?.product_image}`}
             alt="productimg"
           />
         </div>
