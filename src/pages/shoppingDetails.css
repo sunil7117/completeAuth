@@ -39,3 +39,10 @@ tbody td:nth-child(2) p,tbody td:nth-child(4) p{
 .g-10{
     gap:10px;
 }
+.cartclose{
+    cursor: pointer;
+}
+.cartclose:hover{
+    color: rgba(202, 196, 196, 0.404);
+    cursor: pointer;
+}

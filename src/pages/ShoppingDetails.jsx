@@ -1,14 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import Header from "../components/Header";
 import "./shoppingDetails.css";
 import Footer from "../components/Footer";
-import { useSelector } from "react-redux";
 import AddMinusButtons from "../components/pageComponents/AddMinusButtons";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCart, getCart } from "../service/api";
+import { cartadd } from "../redux/loginSlice";
+import { useNavigate } from "react-router-dom";
+// import { cartadd } from "../redux/loginSlice";
+const api = process.env.REACT_APP_SERVER;
 const ShoppingDetails = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const pagename = "shopping-details";
-  const { cart } = useSelector((state) => state.login);
+  const { getuser, cart } = useSelector((state) => state.login);
 
+  const handleRemoveItem = async (product_id) => {
+    try {
+      const savecart = await deleteCart(getuser?.cart, product_id);
+      const getcart = await getCart(getuser?.cart);
+      dispatch(cartadd(getcart.data));
+      if (cart.length > 1) {
+        console.log("ok");
+      } else {
+        navigate("/shop");
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    const getCartItem = async () => {
+      try {
+        const cartdata = await getCart(getuser?.cart);
+        // console.log(cartdata.data);
+      } catch (error) {}
+    };
+    getCartItem();
+  }, [getuser?.cart]);
   return (
     <div>
       <Header pagename={pagename} />
@@ -25,15 +53,11 @@ const ShoppingDetails = () => {
           </thead>
           <tbody>
             {cart.map((item) => {
-              console.log(item);
               return (
-                <tr>
+                <tr key={item?._id}>
                   <td>
                     <div className="flex itemcenter g-10">
-                      <img
-                        src={`http://localhost:8000/${item?.product_image}`}
-                        alt=""
-                      />
+                      <img src={`${api}/${item?.product_image}`} alt="" />
                       <p>{item?.product_name}</p>
                     </div>
                   </td>
@@ -44,13 +68,18 @@ const ShoppingDetails = () => {
                   </td>
                   <td>
                     <div className="flex justifycenter">
-                      <AddMinusButtons id={item?._id} />
+                      <AddMinusButtons />
                     </div>
                   </td>
                   <td>
-                    <div className="flex justifybetween">
-                      {/* <p>{item?.product_price * increase}</p> */}
-                      <span>X</span>
+                    <div className="flex justifybetween cart-total">
+                      <p>{item?.product_price}</p>
+                      <span
+                        className="cartclose"
+                        onClick={() => handleRemoveItem(item?._id)}
+                      >
+                        X
+                      </span>
                     </div>
                   </td>
                 </tr>

@@ -1,8 +1,8 @@
 import axios from 'axios'
-const api=process.env.REACT_APP_SERVER||"http://localhost:8000"
-// const api="https://complete-auth-api.vercel.app/__process.env.REACT_APP_SERVER||"
+// const api="http://localhost:8000"
+const api=process.env.REACT_APP_SERVER
 
-
+console.log(api)
 export const Signup=async(data)=>{
      try {
         return await axios.post(`${api}/api/auth/signup`,data)
@@ -68,13 +68,44 @@ export const getproductbysearch=async(params)=>{
       return(error.response)
    }
 }
-// http://localhost:8000/api/product/addcart,data
-export const addtocartdata=async(params)=>{
+
+
+export const getCart=async(params)=>{
    try {
+      console.error(`${api}/api/user/getcart/${params}`)
+      return await axios.get(`${api}/api/user/getcart/${params}`)
+   } catch (error) {
       
-      return await axios.post(`${api}/api/product/addcart`,params)
+   }
+}
+
+
+// http://localhost:8000/api/product/addcart,data
+export const addtocartdata=async(cartId,product_id)=>{
+   try {
+      return await axios.put(`${api}/api/user/addcart/${cartId}`,{product_id})
    } catch (error) {
       return(error.response)
    }
 }
 
+
+// delete cart item
+export const deleteCart=async(cartId,product_id)=>{
+   try {
+      // console.error(`${api}/api/user/deletecart/${cartId}`)
+      return await axios.put(`${api}/api/user/deletecart/${cartId}`,{product_id})
+   } catch (error) {
+      
+   }
+}
+
+// redirect a user when open website
+// http://localhost:8000/api/auth/redirect,{token body}
+export const redirect=(token)=>{
+   try {
+      return  axios.post(`${api}/api/auth/redirect`,{token})
+   } catch (error) {
+      
+   }
+}

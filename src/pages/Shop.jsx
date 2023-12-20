@@ -11,6 +11,7 @@ const Shop = () => {
   const pagename = "shop";
   const { product } = useSelector((state) => state.data);
   const [sortData, setsortData] = useState([]);
+  console.log(sortData.length);
   const [totalproductcount, settotalproductcount] = useState(sortData.length);
 
   const chooseColor = (color) => {

@@ -3,36 +3,27 @@ import { Badge } from "@mui/material";
 import { HeartBroken, ShoppingBag } from "@mui/icons-material";
 import "./cart.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../service/api";
-import { cartadd } from "../../redux/loginSlice";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { getuser, isFailure, cart } = useSelector((state) => state.login);
-  console.log(cart);
-  const dispatch = useDispatch();
+  const { getuser, cart } = useSelector((state) => state.login);
+
+  // const [cart, setCart] = useState([]);
   const shoppingcart = async () => {
-    console.log(isFailure);
-    if (isFailure) {
-      navigate(`/login?pagename=shopping-details`);
-      console.log("login");
-    } else {
-      if (getuser) {
-        console.log("already login");
+    if (getuser) {
+      console.log("already login");
+      if (cart.length > 0) {
         navigate("/shopping-details");
+      } else {
+        alert("Your cart is empty");
+        navigate("/shop");
       }
+    } else {
+      navigate(`/login?pagename=shopping-details`);
     }
   };
-  const getusercart = async (id) => {
-    try {
-      const { data, status } = await getUser(id);
-      dispatch(cartadd(data));
-    } catch (error) {}
-  };
-  useEffect(() => {
-    getusercart(getuser?._id);
-  }, []);
+  useEffect(() => {});
   return (
     <div className="cart">
       <p className="pointer">

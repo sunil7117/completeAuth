@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import "./headertopbarone.css";
 import {
   Email,
@@ -8,7 +8,6 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contextapi/AuthContext";
 import { Avatar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/loginSlice";
@@ -38,19 +37,19 @@ export const HeaderTopbarLeft = () => {
   );
 };
 export const HeaderTopbarRight = () => {
-  const { getuser, isFailure } = useSelector((state) => state.login);
   const dispatch = useDispatch();
+  const { auth } = useSelector((state) => state.login);
   const navigate = useNavigate();
   const handleloginToggle = () => {
-    if (isFailure) {
+    if (auth === false) {
       navigate("/login");
-    }
-    if (!isFailure) {
-      sessionStorage.clear();
+    } else {
+      localStorage.clear();
       dispatch(logout());
       navigate("/shop");
     }
   };
+
   return (
     <div className="header_topbar_right">
       <p className="header_topbar_right_icon">
@@ -59,9 +58,15 @@ export const HeaderTopbarRight = () => {
       <p className="header_topbar_right_text">Language</p>
       <p className="header_topbar_right_text" onClick={handleloginToggle}>
         <Avatar sx={{ width: 22, height: 22 }}>
-          {isFailure ? <Person sx={{ width: 20, height: 20 }} /> : "Hi"}
+          {auth === false ? (
+            <Avatar>
+              <Person />
+            </Avatar>
+          ) : (
+            <Avatar>hi</Avatar>
+          )}
         </Avatar>
-        {isFailure ? "Login" : "Logout"}
+        {auth === false ? "Login" : "Logout"}
       </p>
     </div>
   );
