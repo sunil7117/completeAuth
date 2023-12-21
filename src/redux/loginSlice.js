@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   getuser:null,
   cart:[],
-  isFailure:true
+  loading:false,
+  auth:false
 }
 
 export const loginSlice = createSlice({
@@ -11,29 +12,37 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     loginStart:(state)=>{
-      state.isFailure=false
+      state.loading=true
+    },
+    redirectStart:(state)=>{
+      state.loading=true
     },
     loginSuccess:(state,action)=>{
-     state.isFailure=false
+     state.loading=false
+     state.auth=true
+     state.getuser=action.payload
+   },
+    redirectSuccess:(state,action)=>{
+     state.loading=false
+     state.auth=true
      state.getuser=action.payload
    },
    loginFailure:(state,action)=>{
-      state.isFailure=true
+      state.loading=false
       state.getuser=action.payload
     },
   logout:(state)=>{
-    state.isFailure=true
     state.getuser=null
+    state.auth=false
     state.cart=[]
   },
   cartadd:(state,action)=>{
     state.cart=action.payload
-     console.log(action.payload)
   }
-  },
+}
 })
 
 // Action creators are generated for each case reducer function
-export const { loginStart,loginSuccess,loginFailure,logout,cartadd } = loginSlice.actions
+export const { loginStart,loginSuccess,loginFailure,logout,cartadd,redirectStart,redirectSuccess } = loginSlice.actions
 
 export default loginSlice.reducer

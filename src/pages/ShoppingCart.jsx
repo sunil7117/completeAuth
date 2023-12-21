@@ -5,10 +5,11 @@ import Hero from "../components/Hero";
 import "./shopping-cart.css";
 import { HeartBroken } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
-import { addtocartdata, getUser, getproductbysearch } from "../service/api";
+import { addtocartdata, getCart, getproductbysearch } from "../service/api";
 import { useDispatch, useSelector } from "react-redux";
 import { cartadd } from "../redux/loginSlice";
 
+const api = process.env.REACT_APP_SERVER;
 const ShoppingCart = () => {
   const pagename = "shopping-cart";
   const [shopping, setshopping] = useState({});
@@ -23,7 +24,7 @@ const ShoppingCart = () => {
   // To get access of url
 
   // get access of central store
-  const { getuser, cart } = useSelector((state) => state.login);
+  const { getuser } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,28 +34,25 @@ const ShoppingCart = () => {
   };
   const addtocart = async () => {
     if (getuser) {
-      const cartData = {
-        _id: getuser._id,
-        product_info: shopping,
-      };
-      const savecart = await addtocartdata(cartData); //this request send to serve for save product data in usercart
-      if (savecart.status === 200) {
-        navigate("/shopping-details");
-      }
-      // how to write code here for update cart for cart component
+      // this code added data in cart as object reference of user in cart
+      const savecart = await addtocartdata(getuser?.cart, productId); //this request send to serve for save product data in usercart
+      const getcart = await getCart(getuser?.cart);
+      dispatch(cartadd(getcart.data));
+      navigate("/shopping-details");
     } else {
       alert("please login first");
       navigate("/login?pagename=shopping-details");
     }
   };
-  const getidfromurl = async (id) => {
-    try {
-      const { data } = await getproductbysearch(id);
-      setshopping(data);
-    } catch (error) {}
-  };
 
   useEffect(() => {
+    const getidfromurl = async (id) => {
+      try {
+        const { data } = await getproductbysearch(id);
+        console.log(api);
+        setshopping(data[0]);
+      } catch (error) {}
+    };
     getidfromurl(productId);
   }, [productId]);
   return (
@@ -65,10 +63,7 @@ const ShoppingCart = () => {
         <div className="shopping-cart_top">
           <div className="shopping-cart_top_left">
             <div className="shopping-cart_top_left_img">
-              <img
-                src={`http://localhost:8000/${shopping?.product_image}`}
-                alt=""
-              />
+              <img src={`${api}/${shopping?.product_image}`} alt="" />
             </div>
             <div className="shopping-cart_top_left_subimg"></div>
           </div>

@@ -1,12 +1,11 @@
 import './App.css';
 import Register from './components/Register';
-import { BrowserRouter, Route, Routes,Outlet } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Signin from './components/Signin';
 import Forget from './components/Forget';
 import OTPVerify from './components/OTPVerify';
 import Home from './pages/Home';
 import UpdatePassword from './components/UpdatePassword';
-import ProtectedRoute from './ProtectedRoute';
 import Contact from './pages/Contact';
 import Shop from './pages/Shop';
 import Blog from './pages/Blog';
@@ -14,18 +13,18 @@ import ShoppingCart from './pages/ShoppingCart';
 import ShoppingDetails from './pages/ShoppingDetails';
 import Checkout from './pages/Checkout';
 import BlogDetails from './pages/BlogDetails';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getallproducts } from './service/api';
-import ProductCount from './contextapi/ProductCount';
-import { AuthContext } from './contextapi/AuthContext';
+import { getCart, getallproducts, redirect } from './service/api';
 import { getProduct, loadingProduct } from './redux/dataSlice';
-import AuthLayout from './AuthLayout';
-;
+import { cartadd, redirectStart, redirectSuccess } from './redux/loginSlice';
+
 // import Error from './pages/Error';
 function App() {
+  const {getuser,auth}=useSelector(state=>state.login)
   const dispatch= useDispatch()
    useEffect(() => {
+    // get all product on page loading
     const allproducts = async () => {
       try {
         dispatch(loadingProduct())
@@ -35,7 +34,27 @@ function App() {
       } catch (error) {}
     };
     allproducts();
-  }, );
+    
+    //user authentication for user redirect to page without login 
+    const userRedirect=async(id)=>{
+      const refreshToken=localStorage.getItem('refresh-token')
+      const token=refreshToken?.split(" ").pop()
+      if(token){
+        dispatch(redirectStart())
+        const redirectUser=await redirect(token)
+        dispatch(redirectSuccess(redirectUser.data))
+        if(auth){
+          const cartdata=await getCart(id)
+          dispatch(cartadd(cartdata.data))
+        }else{
+          console.log("pahle login kijiye")
+        }
+      }else{
+        console.log("apke pass token nhi hai pahle token lijiye")
+      }
+    }
+    userRedirect(getuser?.cart)
+  },[dispatch,auth,getuser?.cart] );
     return (
       
     <BrowserRouter>

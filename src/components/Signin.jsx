@@ -13,7 +13,8 @@ const Signin = () => {
   const currentpage = queryParams.get("pagename");
   // To get access of url
 
-  const { getuser, isFailure } = useSelector((state) => state.login);
+  const { auth } = useSelector((state) => state.login);
+  console.warn(auth);
   const dispatch = useDispatch();
   const initialValue = {
     email: "",
@@ -27,11 +28,8 @@ const Signin = () => {
     dispatch(loginStart());
     const info = await Login(user);
     if (info?.status === 200) {
-      sessionStorage.setItem("access-token", `Bearer ${info.data.accessToken}`);
-      sessionStorage.setItem(
-        "refresh-token",
-        `Bearer ${info.data.refreshToken}`
-      );
+      localStorage.setItem("access-token", `Bearer ${info.data.accessToken}`);
+      localStorage.setItem("refresh-token", `Bearer ${info.data.refreshToken}`);
       dispatch(loginSuccess(info?.data?.userdata));
       if (currentpage) {
         navigate(`/${currentpage}`);
