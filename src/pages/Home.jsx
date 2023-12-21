@@ -26,7 +26,7 @@ const blogData = [
   },
 ];
 const Home = () => {
-  const { product, loading } = useSelector((state) => state.data);
+  const { product } = useSelector((state) => state.data);
   const [sortData, setsortData] = useState([]);
   const searchButtonValue = (btnvalue) => {
     const newsortData =

@@ -3,7 +3,6 @@ import { IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./dropdowns.css";
 const DropdownMenu = ({ pagename }) => {
-  const [showlist, setshowlist] = useState(true);
   const [dropdoenOpen, dropdwonClose] = useState(false);
   const handleDropdown = () => {
     dropdwonClose(!dropdoenOpen);

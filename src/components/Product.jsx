@@ -4,9 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Favorite, ScreenRotationAlt, ShoppingCart } from "@mui/icons-material";
 
 const Product = ({ product }) => {
-
   const api = process.env.REACT_APP_SERVER;
- // const api = "http://localhost:8000";
+  // const api = "http://localhost:8000";
 
   const navigate = useNavigate();
   const addtocart = () => {};
@@ -17,7 +16,7 @@ const Product = ({ product }) => {
     <div className="product" onClick={() => shoppingcart(product?._id)}>
       <div className="product_details">
         <div className="product_img">
-          <img src={`${api}/${product?.product_image}`} alt="productimg" /
+          <img src={`${api}/${product?.product_image}`} alt="productimg" />
         </div>
         <div className="product_detail">
           <p>

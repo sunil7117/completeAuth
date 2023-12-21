@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getproductbysearch } from "../../service/api";
+import React, { useState } from "react";
 const AddMinusButtons = () => {
-  let cartInfo;
   const [productCount, setProductCount] = useState(1);
   const increase = () => {
     setProductCount(productCount + 1);

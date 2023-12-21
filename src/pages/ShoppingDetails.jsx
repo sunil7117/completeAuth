@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Hero from "../components/Hero";
 import Header from "../components/Header";
 import "./shoppingDetails.css";
@@ -18,7 +18,7 @@ const ShoppingDetails = () => {
 
   const handleRemoveItem = async (product_id) => {
     try {
-      const savecart = await deleteCart(getuser?.cart, product_id);
+      await deleteCart(getuser?.cart, product_id);
       const getcart = await getCart(getuser?.cart);
       dispatch(cartadd(getcart.data));
       if (cart.length > 1) {
@@ -31,7 +31,7 @@ const ShoppingDetails = () => {
   useEffect(() => {
     const getCartItem = async () => {
       try {
-        const cartdata = await getCart(getuser?.cart);
+        await getCart(getuser?.cart);
         // console.log(cartdata.data);
       } catch (error) {}
     };

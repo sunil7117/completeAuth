@@ -35,7 +35,7 @@ const ShoppingCart = () => {
   const addtocart = async () => {
     if (getuser) {
       // this code added data in cart as object reference of user in cart
-      const savecart = await addtocartdata(getuser?.cart, productId); //this request send to serve for save product data in usercart
+      await addtocartdata(getuser?.cart, productId); //this request send to serve for save product data in usercart
       const getcart = await getCart(getuser?.cart);
       dispatch(cartadd(getcart.data));
       navigate("/shopping-details");

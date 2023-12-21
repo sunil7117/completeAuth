@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./shop.css";
 import Hero from "../components/Hero";
 import { GridView, List } from "@mui/icons-material";
 import Product from "../components/Product";
-import { ProductCountContext } from "../contextapi/ProductCount";
 import { useSelector } from "react-redux";
 const Shop = () => {
   const pagename = "shop";

@@ -1,6 +1,6 @@
 import React from "react";
 import "./blogDetails.css";
-import { CalendarMonth, Chat, Comment } from "@mui/icons-material";
+import { CalendarMonth, Comment } from "@mui/icons-material";
 const BlogDetails = ({ blog, pagename }) => {
   return (
     <div className="blog_details">
