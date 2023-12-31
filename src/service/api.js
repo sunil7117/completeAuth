@@ -1,6 +1,5 @@
 import axios from 'axios'
-// const api="http://localhost:8000"
-const api=process.env.REACT_APP_SERVER
+const api=process.env.REACT_APP_SERVER ||'https://complete-auth-api.vercel.app'
 
 console.log("ENV SERVER "+api)
 export const Signup=async(data)=>{
