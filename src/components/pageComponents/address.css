@@ -1,0 +1,142 @@
+
+.address_panel_one{
+    background-color: #fff;
+    display: flex;
+    border: 1px solid black;
+    padding-bottom: 12px;
+}
+.address_panel_one_left{
+    flex: 1;
+}
+.panel_top{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-transform: uppercase;
+    padding: 0 20px;
+    gap: 25px;
+    
+}
+.title{
+    display: flex;
+    align-items: center;
+    color: rgba(194, 186, 186, 0.795);
+       
+}
+.serail_one{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(206, 196, 206, 0.274);
+    color: blue;
+    border-radius: 3px;
+    }
+.panel_bottom{
+    margin-left: 60px;
+}
+.address_panel_one_right{
+}
+.change{
+    margin: 12px 20px;
+    border: 1px solid blue;
+    font-weight: 600;
+    padding: 10px 30px;
+    font-size: 15px;
+    text-transform: uppercase;
+    background-color: transparent;
+    cursor: pointer;
+}
+.panel_two{
+    background-color: #fff;
+}
+.two{
+    background-color: blue;
+}
+.space{
+    margin-bottom: 10px;
+}
+.wh{
+    color: #fff;
+}
+.whbg{
+    background-color: #fff;
+}
+
+
+/* table box */
+.table{}
+.table_box{
+    display: flex;
+    padding: 10px 20px;
+    gap:25px;
+    border: 1px solid pink;
+    cursor: pointer;
+    background-color: pink;
+}
+.default{
+    background-color: white;
+}
+.actives{
+    background-color: #F5FAFF;
+}
+.table_box_middle{
+    flex: 1;
+}
+.checkbox{
+    width: 20px;
+    height: 20px;
+    border: blue 1px solid;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tick{
+    background-color: blue;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+.tableButton{
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+}
+.box_bottom_button{
+    background-color: coral;
+    border: none;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    color: #fff;
+}
+.box_top>span{
+    background-color: #e2dede;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 2px 10px;
+    margin: 0 20px;
+}
+.box_middle{
+    margin: 12px 0;
+}
+
+.d-none{
+    display: none;
+}
+.d-block{
+    display: block;
+}
+.addAddress{
+    background-color: #fff;
+    display: flex;
+    padding: 10px 20px;
+    gap:18px;
+    color: blue;
+    align-items: center;
+    cursor: pointer;
+}
+.addAddress>div:nth-child(2){
+    font-size: 15px;
+}

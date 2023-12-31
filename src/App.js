@@ -15,9 +15,10 @@ import Checkout from './pages/Checkout';
 import BlogDetails from './pages/BlogDetails';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCart, getallproducts, redirect } from './service/api';
+import { getAddress, getCart, getallproducts, redirect } from './service/api';
 import { getProduct, loadingProduct } from './redux/dataSlice';
-import { cartadd, redirectStart, redirectSuccess } from './redux/loginSlice';
+import { addresslist, cartadd, redirectStart, redirectSuccess } from './redux/loginSlice';
+import AdminHome from './components/admin/AdminHome';
 
 // import Error from './pages/Error';
 function App() {
@@ -54,25 +55,29 @@ function App() {
       }
     }
     userRedirect(getuser?.cart)
-  },[dispatch,auth,getuser?.cart] );
-    return (
+
+    // get all user save addressed
+    const getaddress=async()=>{
+      try {
+        const address=await getAddress(getuser?.addresslist)
+        dispatch(addresslist(address.data?.addresslists))
+      } catch (error) {
+        
+      }
+    }
+    getaddress()
+  },[dispatch,auth,getuser?.cart,getuser?.addresslist] );
+  return (
       
     <BrowserRouter>
      <Routes>
-      {/*<Route path="/" element={<AuthLayout/>}>
-      <Route path="home" element={<Home/>} />
-      <Route path='blog' element={<Blog/>}/>
-      <Route path='contact' element={<Contact/>}/>
-      <Route path='shop' element={<Shop/>}/>  
-      </Route> */}
       <Route path="/signup" element={<Register/>} />
       <Route path="/login" element={<Signin/>} />
       <Route path="/forgetpassword" element={<Forget/>} />
       <Route path="/otpverification" element={<OTPVerify/>} />
       <Route path="/update-password" element={<UpdatePassword/>} />
       {/* ========================================================= */}
-      <Route path="/" element={<Home/>} />
-      <Route path="/home" element={<Home/>} />
+     <Route path="/" element={<Home/>} />
       <Route path="/home" element={<Home/>} />
       <Route path='/blog' element={<Blog/>}/>
       <Route path='/contact' element={<Contact/>}/>
@@ -81,7 +86,8 @@ function App() {
       <Route path='/shopping-details' element={<ShoppingDetails/>}/>
       <Route path='/checkout' element={<Checkout/>}/>
       <Route path='/checkout' element={<Checkout/>}/>
-      <Route path='/blog-details' element={<BlogDetails/>}/> 
+      <Route path='/blog-details' element={<BlogDetails/>}/>
+      <Route path='/admin' element={<AdminHome/>}/>
       {/* <Route path='*' element={<Error/>}/>*/}
     </Routes>
     </BrowserRouter>

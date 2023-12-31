@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Product from "../components/Product";
 import BlogDetails from "../components/BlogDetails";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 const blogData = [
   {
     img: blog,
@@ -74,8 +75,8 @@ const Home = () => {
           </div>
         </div>
         <div className="home_product">
-          {sortData.map((data) => (
-            <div className="homeproduct">
+          {sortData.map((data, index) => (
+            <div className="homeproduct" key={index}>
               <Product product={data} />
             </div>
           ))}
@@ -96,8 +97,8 @@ const Home = () => {
           </div>
         </div>
         <div className="home_blog_right">
-          {blogData.map((blog) => (
-            <div className="homeblogs">
+          {blogData.map((blog, index) => (
+            <div className="homeblogs" key={index}>
               <BlogDetails blog={blog} />
             </div>
           ))}

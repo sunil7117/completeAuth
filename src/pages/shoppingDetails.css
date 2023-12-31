@@ -1,8 +1,9 @@
 .shopping-details_section{
     width: 85%;
     margin: 0 auto;
+    border: 5px solid red;
 }
-table{
+.shoppingtable{
     width: 100%;
 }
 thead td{
@@ -15,6 +16,10 @@ tbody td{
     font-size: 18px;
     padding: 20px 5px;
     text-transform: capitalize;
+}
+.shoppingtable tbody tr:hover{
+    background-color: aqua;
+    cursor: pointer;
 }
 .flex{
     display: flex;

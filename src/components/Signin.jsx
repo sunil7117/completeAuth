@@ -13,8 +13,8 @@ const Signin = () => {
   const currentpage = queryParams.get("pagename");
   // To get access of url
 
-  const { auth } = useSelector((state) => state.login);
-  console.warn(auth);
+  const { getuser } = useSelector((state) => state.login);
+
   const dispatch = useDispatch();
   const initialValue = {
     email: "",
@@ -34,7 +34,7 @@ const Signin = () => {
       if (currentpage) {
         navigate(`/${currentpage}`);
       } else {
-        navigate("/home");
+        navigate("/");
       }
     }
     if (info?.status === 403) {

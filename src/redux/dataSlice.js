@@ -2,8 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   loading:false,
-  product:[],
-  cart:[],
+  product:[]
 }
 
 export const dataSlice = createSlice({
@@ -19,32 +18,12 @@ export const dataSlice = createSlice({
      },
      errorProduct:(state,action)=>{
       state.product=action.payload
-     },
-     addCart:(state,action)=>{
-      state.cart=action.payload
-     },
-     increasebyOne:(state)=>{
-      state.itemIncrease+=1
-     },
-     decreasebyOne:(state)=>{
-      state.itemIncrease-=1
-     },
-     loginStart:(state)=>{
-       state.isFailure=false
-     },
-     loginSuccess:(state,action)=>{
-      state.isFailure=false
-      state.user=action.payload
-    },
-    loginFailure:(state,action)=>{
-      state.isFailure=true
-       state.isFailure=action.payload
-      
-     },
+     },      
+     
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { loadingProduct,getProduct,errorProduct,addCart} = dataSlice.actions
+export const { loadingProduct,getProduct,errorProduct} = dataSlice.actions
 
 export default dataSlice.reducer

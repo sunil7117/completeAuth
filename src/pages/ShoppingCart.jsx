@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import "./shopping-cart.css";
-import { HeartBroken } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { addtocartdata, getCart, getproductbysearch } from "../service/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,11 +44,14 @@ const ShoppingCart = () => {
     }
   };
 
+  const buynow = () => {
+    navigate(`/checkout?_id=${shopping._id}`);
+  };
+
   useEffect(() => {
     const getidfromurl = async (id) => {
       try {
         const { data } = await getproductbysearch(id);
-        console.log(api);
         setshopping(data[0]);
       } catch (error) {}
     };
@@ -82,10 +84,8 @@ const ShoppingCart = () => {
               <div className="cart-button_middle">
                 <button onClick={addtocart}>Add to cart</button>
               </div>
-              <div className="cart-button_right">
-                <button>
-                  <HeartBroken />
-                </button>
+              <div className="cart-button_middle">
+                <button onClick={buynow}>Buy now</button>
               </div>
             </div>
             <hr className="divider" />

@@ -14,7 +14,7 @@ const ShoppingDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const pagename = "shopping-details";
-  const { getuser, cart } = useSelector((state) => state.login);
+  const { getuser, cart, quantity } = useSelector((state) => state.login);
 
   const handleRemoveItem = async (product_id) => {
     try {
@@ -42,7 +42,7 @@ const ShoppingDetails = () => {
       <Header pagename={pagename} />
       <Hero pagename={pagename} />
       <div className="shopping-details_section">
-        <table border={1}>
+        <table border={1} className="shoppingtable">
           <thead>
             <tr>
               <td>products</td>
@@ -68,12 +68,12 @@ const ShoppingDetails = () => {
                   </td>
                   <td>
                     <div className="flex justifycenter">
-                      <AddMinusButtons />
+                      <AddMinusButtons product_id={item?._id} />
                     </div>
                   </td>
                   <td>
                     <div className="flex justifybetween cart-total">
-                      <p>{item?.product_price}</p>
+                      <p>{item?.product_price * quantity}</p>
                       <span
                         className="cartclose"
                         onClick={() => handleRemoveItem(item?._id)}

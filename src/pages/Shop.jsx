@@ -10,7 +10,6 @@ const Shop = () => {
   const pagename = "shop";
   const { product } = useSelector((state) => state.data);
   const [sortData, setsortData] = useState([]);
-  console.log(sortData.length);
   const [totalproductcount, settotalproductcount] = useState(sortData.length);
 
   const chooseColor = (color) => {
@@ -157,8 +156,8 @@ const Shop = () => {
             </div>
             <div className="product_section">
               <div className="shop_product">
-                {sortData.map((data) => (
-                  <div className="shopproduct">
+                {sortData.map((data, index) => (
+                  <div className="shopproduct" key={index}>
                     <Product product={data} />
                   </div>
                 ))}

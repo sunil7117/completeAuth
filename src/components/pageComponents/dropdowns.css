@@ -29,6 +29,7 @@
     cursor: pointer;
     margin: 15px 0;
     padding: 2px ;
+    text-transform:capitalize
 }
 @media screen and (min-width:992px) {
     .dropdown_list{

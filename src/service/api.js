@@ -2,7 +2,7 @@ import axios from 'axios'
 // const api="http://localhost:8000"
 const api=process.env.REACT_APP_SERVER
 
-console.log(api)
+console.log("ENV SERVER "+api)
 export const Signup=async(data)=>{
      try {
         return await axios.post(`${api}/api/auth/signup`,data)
@@ -72,7 +72,6 @@ export const getproductbysearch=async(params)=>{
 
 export const getCart=async(params)=>{
    try {
-      console.error(`${api}/api/user/getcart/${params}`)
       return await axios.get(`${api}/api/user/getcart/${params}`)
    } catch (error) {
       
@@ -109,3 +108,40 @@ export const redirect=(token)=>{
       
    }
 }
+
+// http://localhost:8000/api/user/addaddress,{addresslist, body}
+export const addAddress=async(id,data,method)=>{
+   try {
+      if(method==='post'){
+         return await axios.post(`${api}/api/user/addaddress/${id}`,data)
+      }
+      return await axios.put(`${api}/api/user/updateaddress/${id}`,data)
+    } catch (error) {
+       // console.error(error.response)     /*This code is for developer only*/
+       return(error.response)
+    }
+}
+
+// http://localhost:8000/api/user/updateaddress,{addresslist, body}
+export const udateAddress=async(id,data,method)=>{
+   
+   try {
+      console.log(method)
+      // return await axios.put(`${api}/api/user/updateaddress/${id}`,data)
+    } catch (error) {
+       // console.error(error.response)     /*This code is for developer only*/
+       return(error.response)
+    }
+}
+
+
+// http://localhost:8000/api/user/getaddress,{addresslist}
+export const getAddress=async(id)=>{
+   try {
+      return await axios.get(`${api}/api/user/getaddress/${id}`)
+    } catch (error) {
+       // console.error(error.response)     /*This code is for developer only*/
+       return(error.response)
+    }
+}
+

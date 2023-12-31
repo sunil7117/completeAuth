@@ -1,0 +1,60 @@
+.make_address{
+    padding: 0 20px;
+    background-color: #F5FAFF;
+}
+.title{
+    display: flex;
+    gap: 25px;
+    padding: 10px 0;
+    align-items: flex-start;
+}
+
+.title>div:nth-child(2){
+    width: 60%;
+    
+}
+.title >div{
+    padding: 15px 0;
+}
+.form_heading{
+    text-transform: uppercase;
+    color: blue;
+    padding-bottom: 10px;
+    
+}
+.form_grid{
+    display: grid;
+    gap:15px;
+}
+.col-6{
+    grid-template-columns:repeat(2,6fr);
+}
+.col-12{
+    grid-template-columns:repeat(1,12fr);
+}
+.addForm{
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px 5px;
+}
+.addForm:focus{
+    outline: none;
+}
+.radio{
+    display: flex;
+    gap:20px;
+}
+.radio span{
+    margin: 0 10px;
+}
+.addButton>button{
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.save{
+    background-color: coral;
+    color: #FFF;
+    border: none;
+    padding: 14px 30px;
+    margin:20px 30px 0px 0 ;
+}

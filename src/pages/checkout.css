@@ -1,0 +1,15 @@
+.checkout{
+    background:#c9c4c4;
+    display: flex;
+    gap:20px;
+    padding: 0 10px;
+}
+.checkout_left{
+    flex:2;
+}
+.checkout_right{
+    flex:1;
+}
+.checkout_right>h1{
+    background-color: #fff;
+}
