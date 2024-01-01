@@ -28,8 +28,11 @@ const blogData = [
 ];
 const Home = () => {
   const { product } = useSelector((state) => state.data);
+  const { productTag } = useSelector((state) => state.login);
+
   const [sortData, setsortData] = useState([]);
   const searchButtonValue = (btnvalue) => {
+    alert(btnvalue);
     const newsortData =
       btnvalue === "all"
         ? product
@@ -62,16 +65,11 @@ const Home = () => {
           </div>
           <div className="home_additional_button">
             <button onClick={() => searchButtonValue("all")}>all</button>
-            <button onClick={() => searchButtonValue("vegetables")}>
-              vegetables
-            </button>
-            <button onClick={() => searchButtonValue("fruits")}>fruits</button>
-            <button onClick={() => searchButtonValue("freshmeat")}>
-              fresh meat
-            </button>
-            <button onClick={() => searchButtonValue("fastfood")}>
-              fastfood
-            </button>
+            {productTag.map((tag) => (
+              <button key={tag} onClick={() => searchButtonValue(tag)}>
+                {tag}
+              </button>
+            ))}
           </div>
         </div>
         <div className="home_product">

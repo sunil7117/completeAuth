@@ -14,7 +14,6 @@ const Checkout = () => {
   console.log("order summay state: " + orderSummary);
   return (
     <div>
-      <Header />
       <Hero pagename={pagename} />
       <div className="checkout">
         <div className="checkout_left">

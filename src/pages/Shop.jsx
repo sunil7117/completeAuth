@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 const Shop = () => {
   const pagename = "shop";
   const { product } = useSelector((state) => state.data);
+  const { productTag, productColor } = useSelector((state) => state.login);
   const [sortData, setsortData] = useState([]);
   const [totalproductcount, settotalproductcount] = useState(sortData.length);
 
@@ -42,13 +43,17 @@ const Shop = () => {
             <h2>Department</h2>
           </div>
           <ul className="shop_section_text">
+            {productTag?.map((tag) => (
+              <li
+                key={tag}
+                className="shop_section_text_link"
+                onClick={() => searchButtonValue(tag)}
+              >
+                {tag}
+              </li>
+            ))}
             <li className="shop_section_text_link">Fresh meat</li>
-            <li
-              className="shop_section_text_link"
-              onClick={() => searchButtonValue("vegetables")}
-            >
-              Vegetables
-            </li>
+
             <li className="shop_section_text_link">fruits and nuts gifts</li>
             <li className="shop_section_text_link">ocean foods</li>
             <li className="shop_section_text_link">butter & eggs</li>
@@ -63,65 +68,22 @@ const Shop = () => {
           </div>
           <div className="shop_section_style">
             <ul className="shop_section_text">
-              <li
-                className="shop_section_text_link"
-                onClick={() => chooseColor("white")}
-              >
-                <div
-                  className="circle"
-                  style={{
-                    border: "2px solid rgb(177, 174, 174)",
-                    background: "#fff",
-                  }}
-                ></div>{" "}
-                <div style={{ marginLeft: 28 }}>white</div>
-              </li>
-              <li
-                className="shop_section_text_link"
-                onClick={() => chooseColor("red")}
-              >
-                <div
-                  className="circle"
-                  style={{ border: "2px solid red", background: "red" }}
-                ></div>{" "}
-                <div style={{ marginLeft: 28 }}>red</div>
-              </li>
-              <li
-                className="shop_section_text_link"
-                onClick={() => chooseColor("blue")}
-              >
-                <div
-                  className="circle"
-                  style={{ border: "2px solid blue", background: "blue" }}
-                ></div>
-                <div style={{ marginLeft: 28 }}>blue</div>
-              </li>
-            </ul>
-            <ul className="shop_section_text">
-              <li className="shop_section_text_link">
-                <div
-                  className="circle"
-                  style={{
-                    border: "2px solid rgb(177, 174, 174)",
-                    background: "#fff",
-                  }}
-                ></div>{" "}
-                <div style={{ marginLeft: 28 }}>white</div>
-              </li>
-              <li className="shop_section_text_link">
-                <div
-                  className="circle"
-                  style={{ border: "2px solid red", background: "red" }}
-                ></div>{" "}
-                <div style={{ marginLeft: 28 }}>red</div>
-              </li>
-              <li className="shop_section_text_link">
-                <div
-                  className="circle"
-                  style={{ border: "2px solid blue", background: "blue" }}
-                ></div>
-                <div style={{ marginLeft: 28 }}>blue</div>
-              </li>
+              {productColor?.map((color) => (
+                <li
+                  key={color}
+                  className="shop_section_text_link"
+                  onClick={() => chooseColor(color)}
+                >
+                  <div
+                    className="circle"
+                    style={{
+                      border: "2px solid rgb(177, 174, 174)",
+                      background: `${color}`,
+                    }}
+                  ></div>
+                  <div style={{ marginLeft: 28 }}>{color}</div>
+                </li>
+              ))}
             </ul>
           </div>
 
