@@ -44,6 +44,7 @@ const AddAddressForm = ({
   setselectedAddress,
   list,
   method,
+  setorderSummary,
 }) => {
   const initalValue = list
     ? list
@@ -74,6 +75,7 @@ const AddAddressForm = ({
       setform(initalValue);
       setPickAddress(true);
       setselectedAddress(form);
+      setorderSummary(true);
     } catch (error) {
       console.log(error);
     }

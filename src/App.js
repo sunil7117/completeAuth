@@ -17,8 +17,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAddress, getCart, getallproducts, redirect } from './service/api';
 import { getProduct, loadingProduct } from './redux/dataSlice';
-import { addresslist, cartadd, redirectStart, redirectSuccess } from './redux/loginSlice';
+import { addresslist, cartadd, getColor, getTag, redirectStart, redirectSuccess } from './redux/loginSlice';
 import AdminHome from './components/admin/AdminHome';
+import PlaceOrder from './pages/PlaceOrder';
 
 // import Error from './pages/Error';
 function App() {
@@ -31,6 +32,13 @@ function App() {
         dispatch(loadingProduct())
         const data = await getallproducts();
         dispatch(getProduct(data.data))
+        console.log(data.data)
+        const productTag=data?.data.map(product=>product.product_tag)
+        const productColor=data?.data.map(product=>product.product_color)
+        const tags = [...new Set(productTag)];
+        const colors = [...new Set(productColor)];
+        dispatch(getTag(tags))
+        dispatch(getColor(colors))
         
       } catch (error) {}
     };
@@ -88,6 +96,7 @@ function App() {
       <Route path='/checkout' element={<Checkout/>}/>
       <Route path='/blog-details' element={<BlogDetails/>}/>
       <Route path='/admin' element={<AdminHome/>}/>
+      <Route path='/order-placed' element={<PlaceOrder/>}/>
       {/* <Route path='*' element={<Error/>}/>*/}
     </Routes>
     </BrowserRouter>

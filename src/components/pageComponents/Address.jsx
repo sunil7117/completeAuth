@@ -75,6 +75,7 @@ const ConfrimAddress = ({
                 setPickAddress={setPickAddress}
                 setselectedAddress={setselectedAddress} //-------------------------
                 method="post"
+                setorderSummary={setorderSummary}
               />
             ) : (
               <div className="addAddress" onClick={handleAddAddress}>

@@ -32,7 +32,6 @@ const Home = () => {
 
   const [sortData, setsortData] = useState([]);
   const searchButtonValue = (btnvalue) => {
-    alert(btnvalue);
     const newsortData =
       btnvalue === "all"
         ? product

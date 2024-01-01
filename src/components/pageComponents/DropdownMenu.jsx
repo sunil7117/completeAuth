@@ -2,10 +2,11 @@ import { KeyboardArrowDown, Reorder } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./dropdowns.css";
-
-const dropdownlist = ["fresh meat", "vegetables", "ocean foods", "onion"];
+import { useSelector } from "react-redux";
 
 const DropdownMenu = ({ pagename }) => {
+  const { productTag } = useSelector((state) => state.login);
+  const dropdownlist = productTag;
   const [dropdoenOpen, dropdwonClose] = useState(false);
   const handleDropdown = () => {
     dropdwonClose(!dropdoenOpen);

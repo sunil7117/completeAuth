@@ -2,11 +2,10 @@ import React from "react";
 import "./product.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Favorite, ScreenRotationAlt, ShoppingCart } from "@mui/icons-material";
+import { checkLocalServer } from "../service/serverChecker";
 
+const api = await checkLocalServer();
 const Product = ({ product }) => {
-  const api = process.env.REACT_APP_SERVER;
-  // const api = "http://localhost:8000";
-
   const navigate = useNavigate();
   const addtocart = () => {};
   const shoppingcart = async (id) => {

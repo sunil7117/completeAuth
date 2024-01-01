@@ -1,7 +1,8 @@
 import axios from 'axios'
-const api=process.env.REACT_APP_SERVER ||'https://complete-auth-api.vercel.app'
+import { checkLocalServer } from './serverChecker';
+const api = await checkLocalServer();
+const ACCESSTOKEN=localStorage.getItem('access-token')
 
-console.log("ENV SERVER "+api)
 export const Signup=async(data)=>{
      try {
         return await axios.post(`${api}/api/auth/signup`,data)
@@ -144,3 +145,21 @@ export const getAddress=async(id)=>{
     }
 }
 
+export const imageupload=async(image)=>{
+   try {
+    return await axios.post(`${api}/api/image/upload`,image)  
+   } catch (error) {
+      return (error)
+   }
+}
+export const addproduct=async(data)=>{
+   const customHeaders = {
+      'Authorization': ACCESSTOKEN,
+   }
+   try {
+   //  return await axios.post(`${api}/api/product/addproduct`,data,customHeaders)  
+    return await axios.post(`${api}/api/product/addproduct`, data, { headers: customHeaders }); //This is working 
+   } catch (error) {
+      return (error)
+   }
+}
